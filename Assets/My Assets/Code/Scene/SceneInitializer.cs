@@ -4,27 +4,37 @@ using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.UI;
 using UnityEngine;
 
-public class SceneInitializer : MonoBehaviour
+namespace TatmanGames.ScreenUI.Scene
 {
-    private IPopupHandler popupHandler = null;
-    public GameObject dialog;
-    void Start()
+    public class SceneInitializer : MonoBehaviour
     {
-        ServiceLocator.Instance.PopupHandler = new PopupHandler();
-        ServiceLocator.Instance.PopupHandler.Canvas = GetComponent<Canvas>();
-        popupHandler = ServiceLocator.Instance.PopupHandler;
-    }
+        private IPopupHandler popupHandler = null;
+        [SerializeField] private GameObject dialog;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip openSound;
+        [SerializeField] private AudioClip closeSound;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
+        void Start()
         {
-            popupHandler.ShowDialog(dialog);
+            ServiceLocator.Instance.PopupHandler = new PopupHandler();
+            popupHandler = ServiceLocator.Instance.PopupHandler;
+            popupHandler.Canvas = GetComponent<Canvas>();
+            popupHandler.AudioSource = audioSource;
+            popupHandler.OpenSound = openSound;
+            popupHandler.CloseSound = closeSound;
         }
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        void Update()
         {
-            popupHandler.CloseDialog();
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                popupHandler.ShowDialog(dialog);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                popupHandler.CloseDialog();
+            }
         }
     }
 }

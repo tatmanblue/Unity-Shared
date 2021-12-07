@@ -14,6 +14,10 @@ namespace TatmanGames.ScreenUI.UI
         public Canvas Canvas { get; set; }
         public bool IsDialogActive { get; private set; } = false;
         public Color BackgroundColor { get; set; } = new Color(10.0f / 255.0f, 10.0f / 255.0f, 10.0f / 255.0f, 0.6f);
+        public AudioSource AudioSource { get; set; } = null;
+        public AudioClip OpenSound { get; set; } = null;
+        public AudioClip CloseSound { get; set; } = null;
+        
         public void ShowDialog(GameObject dialog)
         {
             if (true == IsDialogActive) return;
@@ -81,6 +85,9 @@ namespace TatmanGames.ScreenUI.UI
         {
             if (null == which)
                 return;
+            
+            if (null != OpenSound && null != AudioSource)
+                AudioSource.PlayOneShot(OpenSound);
 
             activeDialog = Canvas.Instantiate<GameObject>(which);
             activeDialog.SetActive(true);
@@ -96,6 +103,9 @@ namespace TatmanGames.ScreenUI.UI
             if (null == activeDialog)
                 return;
             
+            if (null != CloseSound && null != AudioSource)
+                AudioSource.PlayOneShot(CloseSound);
+
             Canvas.Destroy(activeDialog);
             activeDialog = null;
         }
