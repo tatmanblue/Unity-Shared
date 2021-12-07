@@ -19,9 +19,8 @@ namespace TatmanGames.ScreenUI.UI
             if (true == IsDialogActive) return;
             
             IsDialogActive = true;
-            activeDialog = dialog;
-            ShowDialogPrefab(dialog);
             AddBackground();
+            ShowDialogPrefab(dialog);
         }
 
         public void CloseDialog()
@@ -29,8 +28,8 @@ namespace TatmanGames.ScreenUI.UI
             if (false == IsDialogActive) return;
 
             IsDialogActive = false;
+            RemoveDialogPrefab();
             RemoveBackground();
-            Canvas.Destroy(background);
         }
         
         /// <summary>
@@ -53,7 +52,7 @@ namespace TatmanGames.ScreenUI.UI
             image.canvasRenderer.SetAlpha(0.0f);
             image.CrossFadeAlpha(1.0f, 0.4f, false);
             
-            background.transform.localScale = new Vector3(1, 1, 1);
+            background.transform.localScale = Vector3.one;
             background.GetComponent<RectTransform>().sizeDelta = Canvas.GetComponent<RectTransform>().sizeDelta;
             background.transform.SetParent(Canvas.transform, false);
             background.transform.SetSiblingIndex(Canvas.transform.GetSiblingIndex());
@@ -70,7 +69,12 @@ namespace TatmanGames.ScreenUI.UI
 
             var image = background.GetComponent<Image>();
             if (image != null)
-                image.CrossFadeAlpha(0.0f, 0.2f, false);
+                image.CrossFadeAlpha(0.0f, 0.4f, false);
+            
+            if (null != background)
+                Canvas.Destroy(background);
+
+            background = null;
         }
         
         private void ShowDialogPrefab(GameObject which)
@@ -78,13 +82,22 @@ namespace TatmanGames.ScreenUI.UI
             if (null == which)
                 return;
 
-            var popup = Canvas.Instantiate(which) as GameObject;
-            popup.SetActive(true);
-            popup.transform.localScale = Vector3.zero;
-
-            if (null != Canvas)
-                popup.transform.SetParent(Canvas.transform, false);
+            activeDialog = Canvas.Instantiate<GameObject>(which);
+            activeDialog.SetActive(true);
+            activeDialog.transform.localScale = Vector3.one;
             
+            if (null != Canvas)
+                activeDialog.transform.SetParent(Canvas.transform, false);
+            
+        }
+
+        private void RemoveDialogPrefab()
+        {
+            if (null == activeDialog)
+                return;
+            
+            Canvas.Destroy(activeDialog);
+            activeDialog = null;
         }
     }
 }
