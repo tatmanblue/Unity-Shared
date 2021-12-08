@@ -16,7 +16,12 @@ namespace TatmanGames.ScreenUI.Scene
 
         void Start()
         {
+            // TODO:  these should be dynamically determined
+            // TODO: or this scene initializer should not be part of the "distribution" but an example
             ServiceLocator.Instance.PopupHandler = new PopupHandler();
+            ServiceLocator.Instance.PopupEventsManager = new PopupEventsManager();
+            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(dialog);
+            
             popupHandler = ServiceLocator.Instance.PopupHandler;
             popupHandler.Canvas = GetComponent<Canvas>();
             popupHandler.AudioSource = audioSource;

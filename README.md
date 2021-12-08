@@ -2,6 +2,8 @@
 
 This is a test project for unity 
 
+# Documentation
+[TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  
 
 # Assets used
 [Procedural Image](https://assetstore.unity.com/packages/tools/gui/procedural-ui-image-52200)  
