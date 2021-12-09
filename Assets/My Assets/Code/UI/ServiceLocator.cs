@@ -7,6 +7,7 @@ namespace TatmanGames.ScreenUI.UI
 {
     public class ServiceLocator
     {
+        public IDialogEvents DialogEvents { get; set; }
         public IPopupHandler PopupHandler { get; set; }
         public IPopupEventsManager PopupEventsManager { get; set; }
         public IKeyboardHandler KeyboardHandler { get; set; }

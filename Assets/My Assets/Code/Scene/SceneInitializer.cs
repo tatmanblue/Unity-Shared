@@ -4,6 +4,7 @@ using UnityEngine;
 using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.Keyboard;
 using TatmanGames.ScreenUI.UI;
+using UnityEngine.UIElements;
 
 namespace TatmanGames.ScreenUI.Scene
 {
@@ -19,7 +20,9 @@ namespace TatmanGames.ScreenUI.Scene
             // TODO:  these should be dynamically determined
             // TODO: or this scene initializer should not be part of the "distribution" but an example
             ServiceLocator.Instance.PopupHandler = new PopupHandler();
-            ServiceLocator.Instance.PopupEventsManager = new PopupEventsManager();
+            var dialogEvents = new PopupEventsManager();
+            ServiceLocator.Instance.PopupEventsManager = dialogEvents;
+            ServiceLocator.Instance.DialogEvents = dialogEvents;
             ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(dialog);
             
             IPopupHandler popupHandler = ServiceLocator.Instance.PopupHandler;
@@ -34,4 +37,5 @@ namespace TatmanGames.ScreenUI.Scene
             ServiceLocator.Instance.KeyboardHandler.HandleKeyPress();
         }
     }
+
 }

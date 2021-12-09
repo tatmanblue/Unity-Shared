@@ -96,6 +96,8 @@ namespace TatmanGames.ScreenUI.UI
             if (null != Canvas)
                 activeDialog.transform.SetParent(Canvas.transform, false);
             
+            ServiceLocator.Instance.PopupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
+            
         }
 
         private void RemoveDialogPrefab()
@@ -106,8 +108,19 @@ namespace TatmanGames.ScreenUI.UI
             if (null != CloseSound && null != AudioSource)
                 AudioSource.PlayOneShot(CloseSound);
 
+            string dlgName = this.GetDialogName(activeDialog);
+            
             Canvas.Destroy(activeDialog);
             activeDialog = null;
+            
+            ServiceLocator.Instance.PopupEventsManager?.FireDialogCloseEvent(dlgName);
+        }
+
+        private string GetDialogName(GameObject which)
+        {
+            string dlgName = which.name;
+            int indexOf = dlgName.IndexOf("(Clone)");
+            return dlgName.Remove(indexOf);
         }
     }
 }
