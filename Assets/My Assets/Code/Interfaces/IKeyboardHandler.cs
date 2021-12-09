@@ -4,6 +4,6 @@ namespace TatmanGames.ScreenUI
 {
     public interface IKeyboardHandler
     {
-        bool HandleKeyPress(KeyCode c);
+        bool HandleKeyPress();
     }
 }
