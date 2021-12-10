@@ -30,6 +30,14 @@ namespace TatmanGames.ScreenUI.Scene
             popupHandler.AudioSource = audioSource;
             popupHandler.OpenSound = openSound;
             popupHandler.CloseSound = closeSound;
+            
+            dialogEvents.OnButtonPressed += DialogEventsOnOnButtonPressed;
+        }
+
+        private bool DialogEventsOnOnButtonPressed(string dialogName, string buttonId)
+        {
+            Debug.LogWarning($"button clicked {dialogName}/{buttonId}");
+            return false;
         }
 
         private void Update()
