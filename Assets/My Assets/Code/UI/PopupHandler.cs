@@ -116,7 +116,7 @@ namespace TatmanGames.ScreenUI.UI
             activeDialog.transform.localScale = Vector3.one;
             
             if (null != Canvas)
-                activeDialog.transform.SetParent(Canvas.transform, false);
+                activeDialog.transform.SetParent(Canvas.transform, true);
             
             ServiceLocator.Instance.PopupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
             
