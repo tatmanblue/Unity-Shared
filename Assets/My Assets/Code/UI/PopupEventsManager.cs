@@ -1,4 +1,6 @@
-﻿namespace TatmanGames.ScreenUI.UI
+﻿using TatmanGames.ScreenUI.Interfaces;
+
+namespace TatmanGames.ScreenUI.UI
 {
     public class PopupEventsManager : IPopupEventsManager, IDialogEvents
     {

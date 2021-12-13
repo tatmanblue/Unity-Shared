@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TatmanGames.ScreenUI
+namespace TatmanGames.ScreenUI.Interfaces
 {
     public interface IKeyboardHandler
     {

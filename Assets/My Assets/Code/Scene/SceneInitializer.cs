@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.Keyboard;
 using TatmanGames.ScreenUI.UI;
-using UnityEngine.UIElements;
 
 namespace TatmanGames.ScreenUI.Scene
 {
     public class SceneInitializer : MonoBehaviour
     {
-        [SerializeField] private GameObject dialog;
+        [SerializeField] private GameObject gameMenuDialog;
+        [SerializeField] private GameObject settingsDialog;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip openSound;
         [SerializeField] private AudioClip closeSound;
@@ -23,7 +24,7 @@ namespace TatmanGames.ScreenUI.Scene
             var dialogEvents = new PopupEventsManager();
             ServiceLocator.Instance.PopupEventsManager = dialogEvents;
             ServiceLocator.Instance.DialogEvents = dialogEvents;
-            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(dialog);
+            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(gameMenuDialog);
             
             IPopupHandler popupHandler = ServiceLocator.Instance.PopupHandler;
             popupHandler.Canvas = GetComponent<Canvas>();
@@ -31,12 +32,16 @@ namespace TatmanGames.ScreenUI.Scene
             popupHandler.OpenSound = openSound;
             popupHandler.CloseSound = closeSound;
             
-            dialogEvents.OnButtonPressed += DialogEventsOnOnButtonPressed;
+            dialogEvents.OnButtonPressed += DialogEventsOnButtonPressed;
         }
 
-        private bool DialogEventsOnOnButtonPressed(string dialogName, string buttonId)
+        private bool DialogEventsOnButtonPressed(string dialogName, string buttonId)
         {
-            Debug.LogWarning($"button clicked {dialogName}/{buttonId}");
+            if ("quit" == buttonId)
+                ServiceLocator.Instance.PopupHandler.CloseDialog();
+            else if ("settings" == buttonId && settingsDialog != null)
+                ServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);       
+            
             return false;
         }
 

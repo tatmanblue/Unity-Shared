@@ -13,6 +13,7 @@ namespace TatmanGames.ScreenUI.Interfaces
         Canvas Canvas { get; set; }
         Color BackgroundColor { get; set; }
         void ShowDialog(GameObject dialog);
+        void ReplaceDialog(GameObject dialog);
         void CloseDialog();
     }
 }

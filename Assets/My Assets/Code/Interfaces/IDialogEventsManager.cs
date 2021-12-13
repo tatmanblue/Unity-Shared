@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TatmanGames.ScreenUI
+namespace TatmanGames.ScreenUI.Interfaces
 {
     public enum PopupEvents
     {

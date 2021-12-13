@@ -478,7 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2699147520e51f41a472a0c0a587fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog: {fileID: 8904568062695505989, guid: 931479700c82394438d6cb129e2f17cf, type: 3}
+  gameMenuDialog: {fileID: 8904568062695505989, guid: 931479700c82394438d6cb129e2f17cf, type: 3}
+  settingsDialog: {fileID: 198747511256526209, guid: e7cfda47c7274c946a922d4890600886, type: 3}
   audioSource: {fileID: 2010838546}
   openSound: {fileID: 8300000, guid: b33eefbedbf64b64da71b78ba14d0eae, type: 3}
   closeSound: {fileID: 8300000, guid: b33eefbedbf64b64da71b78ba14d0eae, type: 3}

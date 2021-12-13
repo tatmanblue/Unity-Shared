@@ -18,12 +18,33 @@ namespace TatmanGames.ScreenUI.UI
         public AudioClip OpenSound { get; set; } = null;
         public AudioClip CloseSound { get; set; } = null;
         
+        /// <summary>
+        /// makes a dialog appear on screen, centered
+        /// </summary>
+        /// <param name="dialog"></param>
         public void ShowDialog(GameObject dialog)
         {
             if (true == IsDialogActive) return;
             
             IsDialogActive = true;
             AddBackground();
+            ShowDialogPrefab(dialog);
+        }
+
+        /// <summary>
+        /// replaces the current dialog (actively visible) with
+        /// the new dialog
+        /// </summary>
+        /// <param name="dialog"></param>
+        public void ReplaceDialog(GameObject dialog)
+        {
+            if (false == IsDialogActive)
+            {
+                ShowDialog(dialog);
+                return;
+            }
+            
+            DestroyActiveDialog();
             ShowDialogPrefab(dialog);
         }
 
@@ -91,6 +112,7 @@ namespace TatmanGames.ScreenUI.UI
 
             activeDialog = Canvas.Instantiate<GameObject>(which);
             activeDialog.SetActive(true);
+            activeDialog.transform.position = Vector3.zero;
             activeDialog.transform.localScale = Vector3.one;
             
             if (null != Canvas)
@@ -108,6 +130,14 @@ namespace TatmanGames.ScreenUI.UI
             if (null != CloseSound && null != AudioSource)
                 AudioSource.PlayOneShot(CloseSound);
 
+            DestroyActiveDialog();
+        }
+
+        private void DestroyActiveDialog()
+        {
+            if (null == activeDialog)
+                return;
+            
             string dlgName = this.GetDialogName(activeDialog);
             
             Canvas.Destroy(activeDialog);
