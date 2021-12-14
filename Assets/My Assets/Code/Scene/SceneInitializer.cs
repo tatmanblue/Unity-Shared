@@ -12,6 +12,7 @@ namespace TatmanGames.ScreenUI.Scene
     {
         [SerializeField] private GameObject gameMenuDialog;
         [SerializeField] private GameObject settingsDialog;
+        [SerializeField] private GameObject toolbarPopup;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip openSound;
         [SerializeField] private AudioClip closeSound;
@@ -24,7 +25,8 @@ namespace TatmanGames.ScreenUI.Scene
             var dialogEvents = new PopupEventsManager();
             ServiceLocator.Instance.PopupEventsManager = dialogEvents;
             ServiceLocator.Instance.DialogEvents = dialogEvents;
-            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(gameMenuDialog);
+            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(gameMenuDialog, toolbarPopup);
+            ServiceLocator.Instance.Logger = new DebugLogging();
             
             IPopupHandler popupHandler = ServiceLocator.Instance.PopupHandler;
             popupHandler.Canvas = GetComponent<Canvas>();
@@ -40,7 +42,9 @@ namespace TatmanGames.ScreenUI.Scene
             if ("quit" == buttonId)
                 ServiceLocator.Instance.PopupHandler.CloseDialog();
             else if ("settings" == buttonId && settingsDialog != null)
-                ServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);       
+                ServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);
+            else
+                ServiceLocator.Instance.Logger.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
             
             return false;
         }

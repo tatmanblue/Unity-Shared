@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMenuDialog: {fileID: 8904568062695505989, guid: 931479700c82394438d6cb129e2f17cf, type: 3}
   settingsDialog: {fileID: 198747511256526209, guid: e7cfda47c7274c946a922d4890600886, type: 3}
+  toolbarPopup: {fileID: 5998447998096164939, guid: d723364555158de42a73c46d097accb7, type: 3}
   audioSource: {fileID: 2010838546}
   openSound: {fileID: 8300000, guid: b33eefbedbf64b64da71b78ba14d0eae, type: 3}
   closeSound: {fileID: 8300000, guid: b33eefbedbf64b64da71b78ba14d0eae, type: 3}

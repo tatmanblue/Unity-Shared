@@ -17,6 +17,45 @@ namespace TatmanGames.ScreenUI.UI
         public AudioSource AudioSource { get; set; } = null;
         public AudioClip OpenSound { get; set; } = null;
         public AudioClip CloseSound { get; set; } = null;
+
+        public void ShowPopup(GameObject popup)
+        {
+            if (null == popup)
+                return;
+            
+            // TODO: possibly refactor this since the code is duplicated in ShowDialogPrefab
+            var control = Canvas.Instantiate<GameObject>(popup);
+            control.SetActive(true);
+
+            /*
+                TODO: supposedly this works but it doesnt
+                https://gamedev.stackexchange.com/questions/198364/how-do-place-ui-in-code-at-bottom-screen/198366#198366 
+            
+            var controlCanvas = control.GetComponentInChildren<Canvas>();
+            RectTransform RectTransform = Canvas.GetComponent<RectTransform>();
+            //set the anchors to the center - bottom of the bar, TODO: this seems to have no bearing            
+            RectTransform.anchorMin.Set(0.5f, 0);
+            RectTransform.anchorMax.Set(0.5f, 0);
+
+
+            control.transform.SetParent(Canvas.transform);
+
+            //width = Screen width halfed minus rect width half
+            //height = 0 (for bottom) + half of rect height
+            int width = (int) (Screen.width / 2 - RectTransform.rect.width / 2);
+            int height = (int) (Screen.height - RectTransform.rect.height);
+            ServiceLocator.Instance.Logger.LogWarning($"s-w: {Screen.width} r-w: {RectTransform.rect.width}");
+            ServiceLocator.Instance.Logger.LogWarning($"w: {width} h: {height}");
+            RectTransform.anchoredPosition = new Vector3(width, height, 0);
+            control.transform.localScale = Vector3.one;
+            */
+            
+            // screen position is determined by the control as long as Canvas is set to 'Screen Space - Overlay'
+            control.transform.position = Vector3.zero;
+            control.transform.localScale = Vector3.one;
+            control.transform.SetParent(Canvas.transform, true);
+            
+        }
         
         /// <summary>
         /// makes a dialog appear on screen, centered

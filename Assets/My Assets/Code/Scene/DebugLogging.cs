@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace TatmanGames.ScreenUI.Scene
 {
@@ -6,12 +8,12 @@ namespace TatmanGames.ScreenUI.Scene
     {
         public void LogWarning(string statement)
         {
-            throw new System.NotImplementedException();
+            Debug.LogWarning(statement);
         }
 
         public void Log(string statement)
         {
-            throw new System.NotImplementedException();
+            Debug.Log(statement);
         }
     }
 }
