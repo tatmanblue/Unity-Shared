@@ -1,6 +1,6 @@
-﻿using TatmanGames.ScreenUI.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TatmanGames.ScreenUI.Interfaces;
 
 namespace TatmanGames.ScreenUI.UI
 {
@@ -10,6 +10,7 @@ namespace TatmanGames.ScreenUI.UI
         public float destroyTime = 0.5f;
         private bool handlingClose = false;
         private GameObject activeDialog = null;
+        private IPopupEventsManager popupEventsManager = null;
         
         public Canvas Canvas { get; set; }
         public bool IsDialogActive { get; private set; } = false;
@@ -17,6 +18,11 @@ namespace TatmanGames.ScreenUI.UI
         public AudioSource AudioSource { get; set; } = null;
         public AudioClip OpenSound { get; set; } = null;
         public AudioClip CloseSound { get; set; } = null;
+
+        public PopupHandler(IPopupEventsManager popupEventsManager)
+        {
+            this.popupEventsManager = popupEventsManager;
+        }
 
         public void ShowPopup(GameObject popup)
         {
@@ -158,7 +164,7 @@ namespace TatmanGames.ScreenUI.UI
             if (null != Canvas)
                 activeDialog.transform.SetParent(Canvas.transform, true);
             
-            ServiceLocator.Instance.PopupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
+            popupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
             
         }
 
@@ -183,7 +189,7 @@ namespace TatmanGames.ScreenUI.UI
             Canvas.Destroy(activeDialog);
             activeDialog = null;
             
-            ServiceLocator.Instance.PopupEventsManager?.FireDialogCloseEvent(dlgName);
+            popupEventsManager?.FireDialogCloseEvent(dlgName);
         }
 
         private string GetDialogName(GameObject which)

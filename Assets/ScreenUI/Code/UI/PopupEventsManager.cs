@@ -2,6 +2,9 @@
 
 namespace TatmanGames.ScreenUI.UI
 {
+    /// <summary>
+    /// TODO: is part of the demo
+    /// </summary>
     public class PopupEventsManager : IPopupEventsManager, IDialogEvents
     {
         public event DialogEvent OnDialogEvent;

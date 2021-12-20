@@ -8,6 +8,10 @@ using TatmanGames.ScreenUI.UI;
 
 namespace TatmanGames.ScreenUI.Scene
 {
+    /// <summary>
+    /// TODO: is part of the demo
+    /// </summary>
+
     public class SceneInitializer : MonoBehaviour
     {
         [SerializeField] private GameObject gameMenuDialog;
@@ -19,10 +23,11 @@ namespace TatmanGames.ScreenUI.Scene
 
         private void Start()
         {
+            var dialogEvents = new PopupEventsManager();
+            
             // TODO:  these should be dynamically determined
             // TODO: or this scene initializer should not be part of the "distribution" but an example
-            ServiceLocator.Instance.PopupHandler = new PopupHandler();
-            var dialogEvents = new PopupEventsManager();
+            ServiceLocator.Instance.PopupHandler = new PopupHandler(dialogEvents);
             ServiceLocator.Instance.PopupEventsManager = dialogEvents;
             ServiceLocator.Instance.DialogEvents = dialogEvents;
             ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(gameMenuDialog, toolbarPopup);

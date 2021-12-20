@@ -6,7 +6,7 @@ using TatmanGames.ScreenUI.UI;
 namespace TatmanGames.ScreenUI.Keyboard
 {
     /// <summary>
-    /// As is, not sure if this class belongs here as its specific to the test scene more than something reusable
+    /// TODO: is part of the demo
     /// </summary>
     public class GlobalKeyboardHandler : IKeyboardHandler
     {
