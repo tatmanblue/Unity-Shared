@@ -50,7 +50,8 @@ namespace TatmanGames.ScreenUI.UI
             control.transform.localScale = Vector3.one;
             */
             
-            // screen position is determined by the control as long as Canvas is set to 'Screen Space - Overlay'
+            // screen position is determined by the UI prefab
+            // this works correctly as long as Canvas is set to 'Screen Space - Overlay'
             control.transform.position = Vector3.zero;
             control.transform.localScale = Vector3.one;
             control.transform.SetParent(Canvas.transform, true);
