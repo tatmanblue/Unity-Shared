@@ -12,7 +12,7 @@ namespace TatmanGames.ScreenUI.UI
     {
         public void DoButtonClick(string buttonId)
         {
-            ServiceLocator.Instance.PopupEventsManager?.FireButtonPressedEvent(GetDialogName(this.gameObject), buttonId);
+            UIServiceLocator.Instance.PopupEventsManager?.FireButtonPressedEvent(GetDialogName(this.gameObject), buttonId);
         }
         
         private string GetDialogName(GameObject which)

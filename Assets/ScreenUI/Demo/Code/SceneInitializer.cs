@@ -25,13 +25,13 @@ namespace TatmanGames.ScreenUI.Demo
             
             // TODO:  these should be dynamically determined
             // TODO: or this scene initializer should not be part of the "distribution" but an example
-            ServiceLocator.Instance.PopupHandler = new PopupHandler(dialogEvents);
-            ServiceLocator.Instance.PopupEventsManager = dialogEvents;
-            ServiceLocator.Instance.DialogEvents = dialogEvents;
-            ServiceLocator.Instance.KeyboardHandler = new DemoKeyboardHandler(gameMenuDialog, toolbarPopup);
-            ServiceLocator.Instance.Logger = new DebugLogging();
+            UIServiceLocator.Instance.PopupHandler = new PopupHandler(dialogEvents);
+            UIServiceLocator.Instance.PopupEventsManager = dialogEvents;
+            UIServiceLocator.Instance.DialogEvents = dialogEvents;
+            UIServiceLocator.Instance.KeyboardHandler = new DemoKeyboardHandler(gameMenuDialog, toolbarPopup);
+            UIServiceLocator.Instance.Logger = new DebugLogging();
             
-            IPopupHandler popupHandler = ServiceLocator.Instance.PopupHandler;
+            IPopupHandler popupHandler = UIServiceLocator.Instance.PopupHandler;
             popupHandler.Canvas = GetComponent<Canvas>();
             popupHandler.AudioSource = audioSource;
             popupHandler.OpenSound = openSound;
@@ -43,18 +43,18 @@ namespace TatmanGames.ScreenUI.Demo
         private bool DialogEventsOnButtonPressed(string dialogName, string buttonId)
         {
             if ("quit" == buttonId)
-                ServiceLocator.Instance.PopupHandler.CloseDialog();
+                UIServiceLocator.Instance.PopupHandler.CloseDialog();
             else if ("settings" == buttonId && settingsDialog != null)
-                ServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);
+                UIServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);
             else
-                ServiceLocator.Instance.Logger.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
+                UIServiceLocator.Instance.Logger.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
             
             return false;
         }
 
         private void Update()
         {
-            ServiceLocator.Instance.KeyboardHandler.HandleKeyPress();
+            UIServiceLocator.Instance.KeyboardHandler.HandleKeyPress();
         }
     }
 
