@@ -3,17 +3,17 @@ using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.UI;
 
 
-namespace TatmanGames.ScreenUI.Keyboard
+namespace TatmanGames.ScreenUI.Demo
 {
     /// <summary>
-    /// TODO: is part of the demo
+    /// demonstrates implementing IKeyboardHandler
     /// </summary>
-    public class GlobalKeyboardHandler : IKeyboardHandler
+    public class DemoKeyboardHandler : IKeyboardHandler
     {
         private GameObject dialog = null;
         private GameObject popup = null;
 
-        public GlobalKeyboardHandler(GameObject dialog, GameObject popup)
+        public DemoKeyboardHandler(GameObject dialog, GameObject popup)
         {
             this.dialog = dialog;
             this.popup = popup;
@@ -42,14 +42,14 @@ namespace TatmanGames.ScreenUI.Keyboard
             
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                ServiceLocator.Instance.Logger.Log("setting resolution to 3840 x 2160");
+                ServiceLocator.Instance.Logger?.Log("setting resolution to 3840 x 2160");
                 Screen.SetResolution(3840, 2160, true);
                 return true;
             }
             
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ServiceLocator.Instance.Logger.Log("setting resolution to 1920 x 1080");
+                ServiceLocator.Instance.Logger?.Log("setting resolution to 1920 x 1080");
                 Screen.SetResolution(1920, 1080, true);
                 return true;
             }

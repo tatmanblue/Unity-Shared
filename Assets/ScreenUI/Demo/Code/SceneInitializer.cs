@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.Keyboard;
+using TatmanGames.ScreenUI.Scene;
 using TatmanGames.ScreenUI.UI;
 
-namespace TatmanGames.ScreenUI.Scene
+namespace TatmanGames.ScreenUI.Demo
 {
     /// <summary>
-    /// TODO: is part of the demo
+    /// Demonstrates how to set up the popup dialog handler
     /// </summary>
 
     public class SceneInitializer : MonoBehaviour
@@ -30,7 +28,7 @@ namespace TatmanGames.ScreenUI.Scene
             ServiceLocator.Instance.PopupHandler = new PopupHandler(dialogEvents);
             ServiceLocator.Instance.PopupEventsManager = dialogEvents;
             ServiceLocator.Instance.DialogEvents = dialogEvents;
-            ServiceLocator.Instance.KeyboardHandler = new GlobalKeyboardHandler(gameMenuDialog, toolbarPopup);
+            ServiceLocator.Instance.KeyboardHandler = new DemoKeyboardHandler(gameMenuDialog, toolbarPopup);
             ServiceLocator.Instance.Logger = new DebugLogging();
             
             IPopupHandler popupHandler = ServiceLocator.Instance.PopupHandler;
