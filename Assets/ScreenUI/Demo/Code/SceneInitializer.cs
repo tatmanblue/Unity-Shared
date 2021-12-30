@@ -7,7 +7,7 @@ using TatmanGames.ScreenUI.UI;
 namespace TatmanGames.ScreenUI.Demo
 {
     /// <summary>
-    /// Demonstrates how to set up the popup dialog handler
+    /// Demonstrates how to set up the ScreenUI system
     /// </summary>
 
     public class SceneInitializer : MonoBehaviour

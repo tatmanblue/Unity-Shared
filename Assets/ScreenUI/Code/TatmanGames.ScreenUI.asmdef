@@ -1,5 +1,5 @@
 {
-    "name": "Screen",
+    "name": "TatmanGames.ScreenUI",
     "rootNamespace": "TatmanGames.ScreenUI",
     "references": [],
     "includePlatforms": [
