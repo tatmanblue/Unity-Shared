@@ -19,6 +19,8 @@ namespace TatmanGames.ScreenUI.UI
         {
             string dlgName = which.name;
             int indexOf = dlgName.IndexOf("(Clone)");
+            if (0 >= indexOf)
+                return dlgName;
             return dlgName.Remove(indexOf);
         }
     }
