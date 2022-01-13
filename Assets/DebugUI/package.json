@@ -1,0 +1,12 @@
+{  
+   "description": "provides UI and input handling for a debug console",
+   "displayName": "Tatman Games Debug Console UI Kit",
+   "name": "com.tatman-games.debugui",
+   "version": "0.0.2",
+   "unity": "2020.3",
+  "author": {
+    "name": "Matt Raffel",
+    "email": "matt.raffel@gmail.com",
+    "url": "https://www.tatmanblue.com"
+  }
+}
