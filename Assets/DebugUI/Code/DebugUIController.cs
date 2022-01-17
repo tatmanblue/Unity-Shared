@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using TatmanGames.DebugUI.Interfaces;
+using TatmanGames.DebugUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TatmanGames.DebugUI.Demo
+namespace TatmanGames.DebugUI
 {
     
     public class DebugUIController : MonoBehaviour
@@ -62,7 +60,6 @@ namespace TatmanGames.DebugUI.Demo
         {
             _engine.Commands.Add(new GenericCommand("help", "shows this help"));
             _engine.Commands.Add(new GenericCommand("clear", "clears console"));
-            _engine.Commands.Add(new DemoCustomCommand());
         }
         
         private void AddMessageToConsole(string msg)
