@@ -10,8 +10,9 @@ namespace TatmanGames.DebugUI.Demo
     public class DebugUIController : MonoBehaviour
     {
         private CommandEngine _engine = new CommandEngine();
-        
-        [Header("UI Components")]
+
+        [Header("UI Components")] 
+        public KeyCode activationKey = KeyCode.BackQuote;
         public Canvas consoleCanvas;        // just the canvas
         public Text inputText;              // where commands are entered
         public Text consoleText;            // command output is placed here
@@ -19,13 +20,14 @@ namespace TatmanGames.DebugUI.Demo
         private void Start()
         {
             consoleCanvas.gameObject.SetActive(false);
-            _engine.OnGlobalCommandEvent += EngineOnOnGlobalCommandEvent;
+            _engine.OnGlobalCommandEvent += EngineOnGlobalCommandEvent;
             AddGlobalCommands();
         }
         
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.BackQuote))
+            // on activationKey toggle if the debug window is visible or not
+            if(Input.GetKeyDown(activationKey))
             {
                 consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy);
             }
@@ -40,21 +42,27 @@ namespace TatmanGames.DebugUI.Demo
                         string result = _engine.HandleCommand(inputText.text);
                         if (!string.IsNullOrEmpty(result))
                             AddMessageToConsole(result);
-                        inputText.text = string.Empty;
+                        inputText.text = "";
                     }
                 }
             }
         }
         
-        private string EngineOnOnGlobalCommandEvent(string command, string[] args)
+        private string EngineOnGlobalCommandEvent(string command, string[] args)
         {
-            return $"not handled {command}";
+            if (command.Equals("clear"))
+            {
+                consoleText.text = "";
+                return string.Empty;
+            }
+            return $"registered command not handled: {command}";
         }
 
         private void AddGlobalCommands()
         {
             _engine.Commands.Add(new GenericCommand("help", "shows this help"));
             _engine.Commands.Add(new GenericCommand("clear", "clears console"));
+            _engine.Commands.Add(new DemoCustomCommand());
         }
         
         private void AddMessageToConsole(string msg)
