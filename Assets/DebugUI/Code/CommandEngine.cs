@@ -4,7 +4,7 @@ using TatmanGames.DebugUI.Interfaces;
 namespace TatmanGames.DebugUI
 {
     public delegate string GlobalCommandEvent(string command, string[] args);
-    public class CommandEngine
+    public class CommandEngine : IDebugEngine
     {
         public List<IDebugCommand> Commands { get; } = new List<IDebugCommand>();
         public event GlobalCommandEvent OnGlobalCommandEvent;
@@ -20,7 +20,7 @@ namespace TatmanGames.DebugUI
             
             // if the command has not been found in the list do nothing
             if (null == command)
-                return result;
+                return $"no command registered: {elements[0]}";
 
             if (true == command.HasCommandHandler())
             {
@@ -36,6 +36,11 @@ namespace TatmanGames.DebugUI
             }
 
             return result;
+        }
+
+        public void AddCommand(IDebugCommand command)
+        {
+            Commands.Add(command);
         }
     }
 }

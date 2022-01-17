@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using TatmanGames.DebugUI;
+using TatmanGames.DebugUI.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +17,17 @@ namespace TatmanGames.DebugUI
         public Canvas consoleCanvas;        // just the canvas
         public Text inputText;              // where commands are entered
         public Text consoleText;            // command output is placed here
-        
+
+        private void Awake()
+        {
+            DebugServiceLocator.Instance.Engine = _engine;
+            _engine.OnGlobalCommandEvent += EngineOnGlobalCommandEvent;
+            AddGlobalCommands();
+        }
+
         private void Start()
         {
             consoleCanvas.gameObject.SetActive(false);
-            _engine.OnGlobalCommandEvent += EngineOnGlobalCommandEvent;
-            AddGlobalCommands();
         }
         
         private void Update()
@@ -58,8 +66,8 @@ namespace TatmanGames.DebugUI
 
         private void AddGlobalCommands()
         {
-            _engine.Commands.Add(new GenericCommand("help", "shows this help"));
-            _engine.Commands.Add(new GenericCommand("clear", "clears console"));
+            _engine.AddCommand(new GenericCommand("help", "shows this help"));
+            _engine.AddCommand(new GenericCommand("clear", "clears console"));
         }
         
         private void AddMessageToConsole(string msg)

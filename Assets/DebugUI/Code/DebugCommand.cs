@@ -2,6 +2,7 @@
 
 namespace TatmanGames.DebugUI
 {
+    [System.Serializable]
     public abstract class DebugCommand : IDebugCommand
     {
         public string Word { get; protected set; }
@@ -35,4 +36,5 @@ namespace TatmanGames.DebugUI
             Description = desc;
         }
     }
+    
 }

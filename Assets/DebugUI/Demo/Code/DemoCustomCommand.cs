@@ -1,4 +1,7 @@
-﻿namespace TatmanGames.DebugUI.Demo
+﻿using System;
+using UnityEngine;
+
+namespace TatmanGames.DebugUI.Demo
 {
     public class DemoCustomCommand : DebugCommand
     {
