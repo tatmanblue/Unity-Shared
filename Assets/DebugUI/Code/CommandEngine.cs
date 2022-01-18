@@ -8,6 +8,7 @@ namespace TatmanGames.DebugUI
     {
         public List<IDebugCommand> Commands { get; } = new List<IDebugCommand>();
         public event GlobalCommandEvent OnGlobalCommandEvent;
+        public event DebugCommandWindowStateChange OnStateChange;
 
         public string HandleCommand(string input)
         {
@@ -41,6 +42,15 @@ namespace TatmanGames.DebugUI
         public void AddCommand(IDebugCommand command)
         {
             Commands.Add(command);
+        }
+
+        protected internal void FireStateChange(DebugCommandWindowState state)
+        {
+            DebugCommandWindowStateChange eventStateChange = OnStateChange;
+            if (null == eventStateChange)
+                return;
+
+            eventStateChange(state);
         }
     }
 }

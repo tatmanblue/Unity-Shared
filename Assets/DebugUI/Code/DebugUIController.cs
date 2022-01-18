@@ -35,7 +35,11 @@ namespace TatmanGames.DebugUI
             // on activationKey toggle if the debug window is visible or not
             if(Input.GetKeyDown(activationKey))
             {
-                consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy);
+                // when activeInHierarchy is false, we are activating it and opening the window
+                // and vice versa when activeInHierarchy is true
+                bool canvasShowing = consoleCanvas.gameObject.activeInHierarchy;
+                consoleCanvas.gameObject.SetActive(!canvasShowing);         // NOTE the ! inverting the value
+                _engine.FireStateChange(canvasShowing == true ? DebugCommandWindowState.Closed : DebugCommandWindowState.Opened);
             }
 
             if(consoleCanvas.gameObject.activeInHierarchy)
