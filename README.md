@@ -1,6 +1,10 @@
-# Test Project
+# UI-Input
 
-This is a test project for unity 
+Unity project for building framework for UI input handling.
+
+## Projects
+[DebugConsole](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI)  
+[Popup Manager](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 # Documentation
 [TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  
