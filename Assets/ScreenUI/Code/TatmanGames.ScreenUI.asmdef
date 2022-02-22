@@ -1,7 +1,7 @@
 {
     "name": "TatmanGames.ScreenUI",
     "rootNamespace": "TatmanGames.ScreenUI",
-    "references": [],
+    "references": ["TatmanGames.Common"],
     "includePlatforms": [
         "Editor",
         "LinuxStandalone64",

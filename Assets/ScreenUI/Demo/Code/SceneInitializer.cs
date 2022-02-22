@@ -1,8 +1,10 @@
+using TatmanGames.Common.ServiceLocator;
 using UnityEngine;
 using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.Keyboard;
 using TatmanGames.ScreenUI.Scene;
 using TatmanGames.ScreenUI.UI;
+using ILogger = TatmanGames.ScreenUI.Interfaces.ILogger;
 
 namespace TatmanGames.ScreenUI.Demo
 {
@@ -25,13 +27,14 @@ namespace TatmanGames.ScreenUI.Demo
             
             // TODO:  these should be dynamically determined
             // TODO: or this scene initializer should not be part of the "distribution" but an example
-            UIServiceLocator.Instance.PopupHandler = new PopupHandler(dialogEvents);
-            UIServiceLocator.Instance.PopupEventsManager = dialogEvents;
-            UIServiceLocator.Instance.DialogEvents = dialogEvents;
-            UIServiceLocator.Instance.KeyboardHandler = new DemoKeyboardHandler(gameMenuDialog, toolbarPopup);
-            UIServiceLocator.Instance.Logger = new DebugLogging();
+            ServicesLocator services = GlobalServicesLocator.Instance;
+            services.AddService("PopupHandler", new PopupHandler(dialogEvents));
+            services.AddService("PopupEventsManager", dialogEvents);
+            services.AddService("DialogEvents", dialogEvents);
+            services.AddService("KeyboardHandler",new DemoKeyboardHandler(gameMenuDialog, toolbarPopup));
+            services.AddService("Logger", new DebugLogging());
             
-            IPopupHandler popupHandler = UIServiceLocator.Instance.PopupHandler;
+            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler");
             popupHandler.Canvas = GetComponent<Canvas>();
             popupHandler.AudioSource = audioSource;
             popupHandler.OpenSound = openSound;
@@ -43,18 +46,18 @@ namespace TatmanGames.ScreenUI.Demo
         private bool DialogEventsOnButtonPressed(string dialogName, string buttonId)
         {
             if ("quit" == buttonId)
-                UIServiceLocator.Instance.PopupHandler.CloseDialog();
+                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler")?.CloseDialog();
             else if ("settings" == buttonId && settingsDialog != null)
-                UIServiceLocator.Instance.PopupHandler.ReplaceDialog(settingsDialog);
+                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler")?.ReplaceDialog(settingsDialog);
             else
-                UIServiceLocator.Instance.Logger.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
+                GlobalServicesLocator.Instance.GetServiceByName<ILogger>("Logger")?.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
             
             return false;
         }
 
         private void Update()
         {
-            UIServiceLocator.Instance.KeyboardHandler.HandleKeyPress();
+            GlobalServicesLocator.Instance.GetServiceByName<IKeyboardHandler>("KeyboardHandler")?.HandleKeyPress();
         }
     }
 

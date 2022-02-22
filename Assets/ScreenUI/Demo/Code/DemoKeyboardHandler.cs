@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TatmanGames.Common.ServiceLocator;
+using UnityEngine;
 using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.UI;
 
@@ -21,7 +22,8 @@ namespace TatmanGames.ScreenUI.Demo
         
         public virtual bool HandleKeyPress()
         {
-            IPopupHandler popupHandler = UIServiceLocator.Instance.PopupHandler;
+            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler");
+            TatmanGames.ScreenUI.Interfaces.ILogger logger = GlobalServicesLocator.Instance.GetServiceByName<TatmanGames.ScreenUI.Interfaces.ILogger>("Logger");
             if (Input.GetKeyDown(KeyCode.D))
             {
                 popupHandler?.ShowDialog(dialog);
@@ -42,21 +44,21 @@ namespace TatmanGames.ScreenUI.Demo
             
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                UIServiceLocator.Instance.Logger?.Log("setting resolution to 3840 x 2160");
+                logger?.Log("setting resolution to 3840 x 2160");
                 Screen.SetResolution(3840, 2160, true);
                 return true;
             }
             
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                UIServiceLocator.Instance.Logger?.Log("setting resolution to 1920 x 1080");
+                logger?.Log("setting resolution to 1920 x 1080");
                 Screen.SetResolution(1920, 1080, true);
                 return true;
             }
             
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                UIServiceLocator.Instance.Logger.Log("setting resolution to 1024 x 768");
+                logger?.Log("setting resolution to 1024 x 768");
                 Screen.SetResolution(1024, 768, true);
                 return true;
             }

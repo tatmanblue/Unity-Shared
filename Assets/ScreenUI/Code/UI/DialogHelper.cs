@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TatmanGames.Common.ServiceLocator;
+using TatmanGames.ScreenUI.Interfaces;
 using UnityEngine;
 
 namespace TatmanGames.ScreenUI.UI
@@ -12,7 +14,8 @@ namespace TatmanGames.ScreenUI.UI
     {
         public void DoButtonClick(string buttonId)
         {
-            UIServiceLocator.Instance.PopupEventsManager?.FireButtonPressedEvent(GetDialogName(this.gameObject), buttonId);
+            IPopupEventsManager service = GlobalServicesLocator.Instance.GetServiceByName<IPopupEventsManager>("PopupEventsManager");
+            service?.FireButtonPressedEvent(GetDialogName(this.gameObject), buttonId);
         }
         
         private string GetDialogName(GameObject which)
