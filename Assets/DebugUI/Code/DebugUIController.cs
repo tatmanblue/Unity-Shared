@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using TatmanGames.Common.ServiceLocator;
 using TatmanGames.DebugUI;
 using TatmanGames.DebugUI.Interfaces;
@@ -64,6 +65,19 @@ namespace TatmanGames.DebugUI
             if (command.Equals("clear"))
             {
                 consoleText.text = "";
+                return string.Empty;
+            }
+
+            if (command.Equals("help"))
+            {
+                StringBuilder output = new StringBuilder();
+                foreach (IDebugCommand cmd in _engine.Commands)
+                {
+                    output.Append($"{cmd.Word} : {cmd.Description}\n");
+                }
+
+                output.Append($"use {activationKey} to close this window.\n");
+                AddMessageToConsole(output.ToString());
                 return string.Empty;
             }
             return $"registered command not handled: {command}";
