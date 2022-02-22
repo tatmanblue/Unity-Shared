@@ -1,4 +1,5 @@
 ﻿using System;
+using TatmanGames.Common.ServiceLocator;
 using TatmanGames.DebugUI.Interfaces;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace TatmanGames.DebugUI.Demo
     {
         private void Start()
         {
-            IDebugEngine engine = DebugServiceLocator.Instance.Engine;
+            IDebugEngine engine = GlobalServicesLocator.Instance.GetServiceByName<IDebugEngine>("CommandEngine");
             if (null == engine)
                 return;
             

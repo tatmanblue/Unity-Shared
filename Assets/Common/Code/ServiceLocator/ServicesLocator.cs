@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TatmanGames.Common.ServiceLocator
 {
@@ -38,6 +39,11 @@ namespace TatmanGames.Common.ServiceLocator
                 throw new ServiceLocatorException($"{name} isn't found");
 
             return (T) services[name];
+        }
+
+        public List<string> ListAllServices()
+        {
+            return new List<string>(services.Keys.ToArray());
         }
     }
 }

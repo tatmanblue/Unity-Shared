@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TatmanGames.Common.ServiceLocator;
 using TatmanGames.DebugUI;
 using TatmanGames.DebugUI.Interfaces;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace TatmanGames.DebugUI
 
         private void Awake()
         {
-            DebugServiceLocator.Instance.Engine = _engine;
+            GlobalServicesLocator.Instance.AddService("CommandEngine", _engine);
             _engine.OnGlobalCommandEvent += EngineOnGlobalCommandEvent;
             AddGlobalCommands();
         }

@@ -1,7 +1,7 @@
 {
     "name": "TatmanGames.DebugUI",
     "rootNamespace": "TatmanGames.DebugUI",
-    "references": [],
+    "references": ["TatmanGames.Common"],
     "includePlatforms": [
         "Editor",
         "LinuxStandalone64",
