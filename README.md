@@ -11,9 +11,24 @@ Unity project for building framework for UI input handling.
 Unity Game.   RPG/Open world style play in a modern setting.  For Windows, MacOS, Linux
 
 # License
-All of the files required to build the game is provided for security review, only.  By downloading, viewing, copying or otherwise accessing the project, you agree to not copy, redistribute, or transmit any of the files in the repo in any format, neither compiled, or raw, in whole or in part, or any other way.
+The license included applies only to the files in this repo.   As the documentation states below, specific 3rd party assets are required to build and run
+the demos in this project.  The license here does not apply to 3rd party assets. You agree to purchase those assets and abide by their licensing terms. 
 
-Please see [LICENSE.md](./LICENSE.md).  
+```
+   Copyright 2022 Tatman Games Dba Matthew Raffel
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
 
 ## Legal
 If you have any questions about the content of the repository, please email [matt.raffel@gmail.com](mailto:matt.raffel@gmail.com). I can assure you all content has been purchased and licensed to me. Proof will be made available on request. Repeated DCMA counterfit and harassment claims will result in counter suits per Section 512(f) of the DMCA penalties for _misrepresentation can include actual damages and attorney’s fees_.
@@ -23,7 +38,7 @@ On-going/Active
 
 This library is in prototype, early development stage.
 
-edited: 2022.01.16
+edited: 2022.02.19
 
 ## Documentation
 [TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  

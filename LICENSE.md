@@ -1,250 +1,202 @@
-TATMAN GAMES PUBLIC LICENSE
-	
-1. Definitions
 
-1.1 "Commercial Use" means covered code utilized by USER to generate a
-  revenue stream, including but not limited to, embedding the source
-  code in USER's proprietary software, executable software, or
-  consulting utilizing the source code.
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
 
-1.2 "Contributor" means each entity that creates or contributes to the
-  creation of Modifications.
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
-1.3 "Covered Code" means the Original Source Code, Modifications, or
-  the combination of the Original Source Code and Modifications, in
-  each case including portions thereof. The Original Source Code,
-  developed by Matthew Raffel aka tatman games, hereinafter referred to as
-  TATMAN GAMES is described in the Source Code notice required by
-  Exhibit A.
+   1. Definitions.
 
-1.4 "Source Code" means the preferred form of the Covered Code for
-  making modifications to it, including all modules it contains, plus
-  any associated interface definition files, scripts used to control
-  compilation and installation of an Executable, or a list of source
-  code differential comparisons against either the Original Source
-  Code or another well known, available Covered Code of the
-  Contributor's choice. The Source Code can be in a compressed or
-  archival form, provided the appropriate decompression or
-  de-archiving software is widely available for no charge.
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
 
-1.5 "Electronic Distribution Mechanism" means a mechanism generally
-  accepted in the software development community for the electronic
-  transfer of data.
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
 
-1.6 "Larger Work" means a work, which combines Covered Code or
-  portions thereof with code not governed by the terms of this
-  License.
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
 
-1.7 "License" means this document.
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
 
-1.8 "Licensable" means having the right to grant, to the maximum
-  extent possible, whether at the time of the initial grant or
-  subsequently acquired, any and all rights conveyed herein.
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
 
-1.9 "Modifications" means any addition to or deletion from the
-  substance or structure of either the Original Source Code or any
-  previous Modifications. When Covered Code is released as a series of
-  files, a Modification is:
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
 
-  (a) Any addition to or deletion from the contents of a file
-      containing Original Code or previous Modifications.
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
 
-  (b) Any new file that contains any part of the Original Code or
-      previous Modifications
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
 
-1.10 "USER" (or "YOU") means an individual or a legal entity
-  exercising rights under, and complying with all of the terms of this
-  License. For legal entities, USER includes any entity, which
-  controls, is controlled by, or is under common control with You. For
-  purposes of this definition, "control" means (a) the power, direct
-  or indirect, to cause the direction or management of such entity,
-  whether by contract or otherwise, or (b) ownership of fifty percent
-  (50%) or more of the outstanding shares or beneficial ownership of
-  such entity.
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
 
-2. Source Code License.
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
 
-2.1 The Initial Developer Grant TATMAN GAMES hereby grants USER a READ-ONLY access 
-  to all files for corn theory, subject to third party intellectual property claims. 
-  As USER you agree to not redistribute any file part of corn theory in any form.
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
 
-  (a) No license to use, reproduce, modify, display, and perform, the Covered
-  Code (or portions thereof) with or without Modifications, or as part
-  of a Larger Work.; and
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
 
-  (b) under patents now or hereafter owned or controlled by
-  TATMAN GAMES, to make, have made, and use ("Utilize") the Covered
-  Code(or portions thereof), but solely to the extent that any such
-  patent is reasonably necessary to enable USER to Utilize the Covered
-  Code (or portions thereof) and not to any greater extent that may be
-  necessary to Utilize further Modifications or combinations.
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
 
-  (c) the licenses granted in this Section 2.1(a) and (b) are
-  effective on the date the USER first receives Covered Code.
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
 
-  (d) No License is granted by TATMAN GAMES for the Commercial Use of
-  Covered Code under this License.
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
 
-  (e) No License is granted by TATMAN GAMES for the distribution of
-  Covered Code under this License.
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
 
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
 
-2.2. Contributor Grant. Each Contributor hereby grants TATMAN GAMES a
-  world-wide, royalty-free, non-exclusive license, subject to third
-  party intellectual property claims:
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
 
-  (a) to use, reproduce, modify, display, perform, sublicense and
-  distribute the Modifications created by such Contributor (or
-  portions thereof) either on an unmodified basis, with other
-  Modifications, as Covered Code or as part of a Larger Work; and
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
 
-  (b) under patents now or hereafter owned or controlled by
-  Contributor, to Utilize the Covered Code (or portions thereof), but
-  solely to the extent that any such patent is reasonably necessary to
-  enable USER to Utilize the Contributor Version (or portions
-  thereof), and not to any greater extent that may be necessary to
-  Utilize further Modifications or combinations.
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
 
-  (c) the licenses granted in this Section 2.2(a) and (b) are
-  effective on the date the TATMAN GAMES first receives the Covered Code
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
 
-3. Contributor Obligations
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
 
-3.1. Intellectual Property Matters
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
 
-  (a) Third Party Claims. If USER has knowledge that a party claims an
-  intellectual property right in particular functionality or code (or
-  its utilization under this License), USER must include a text file
-  with the source code provided to TATMAN GAMES titled "LEGAL" which
-  describes the claim and the party making the claim in sufficient
-  detail that TATMAN GAMES will know whom to contact. If USER obtains
-  such knowledge after USER makes the Modification available to
-  TATMAN GAMES, USER shall promptly modify the LEGAL file in all copies
-  USER makes available thereafter and shall notify TATMAN GAMES that new
-  knowledge has been obtained.
+   END OF TERMS AND CONDITIONS
 
-  (b) Contributor APIs. If Your Modification is an application
-  programming interface and USER owns or controls patents, which are
-  reasonably necessary to implement that API, you must also include
-  this information in the LEGAL file.
+   APPENDIX: How to apply the Apache License to your work.
 
-3.2. Required Notices. USER must duplicate the notice in Exhibit A in
-  each file of the Source Code, and this License in any documentation
-  for the Source Code, where USER describes recipients' rights
-  relating to Covered Code. If USER created one or more
-  Modification(s), USER may add name as a Contributor to the notice
-  described in Exhibit A. If it is not possible to put such notice in
-  a particular Source Code file due to its structure, then USER must
-  include such notice in a location (such as a relevant directory
-  file) where a user would be likely to look for such a notice.
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
 
-3.3. Distribution of Executable Versions. - This license does not
-  allow distribution of the Covered Code by USER or Contributor.
+   Copyright 2022 Tatman Games Dba Matthew Raffel
 
-3.4. Larger Works. USER may create a Larger Work by combining Covered
-  Code with other code not governed by the terms of this License. In
-  such a case, USER must make sure the requirements of this License
-  are fulfilled for the Covered Code including 2.1d and 2.1e.
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
 
-4. Inability to Comply Due to Statute or Regulation.
+       http://www.apache.org/licenses/LICENSE-2.0
 
-  If it is impossible for USER to comply with any of the terms of this
-  License with respect to some or all of the Covered Code due to
-  statute or regulation then USER must:
-
-  (a) comply with the terms of this License to the maximum extent
-  possible; and
-
-  (b) describe the limitations and the code they affect. Such
-  description must be included in the LEGAL file described in Section
-  3.1 and must be included with all distributions of the Source
-  Code. Except to the extent prohibited by statute or regulation, such
-  description must be sufficiently detailed for a recipient of
-  ordinary skill to be able to understand it.
-
-5. Application of this License.
-
-  This License applies to Covered Code attached to the notice in Exhibit A.
-
-6. DISCLAIMER OF WARRANTY.
-
-  COVERED CODE IS PROVIDED UNDER THIS LICENSE ON AN "AS IS" BASIS,
-  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED,
-  INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT THE COVERED CODE IS
-  FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE OR
-  NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF
-  THE COVERED CODE IS WITH USER. SHOULD ANY COVERED CODE PROVE
-  DEFECTIVE IN ANY RESPECT, YOU (NOT THE TATMAN GAMES OR ANY OTHER
-  CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR
-  CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL
-  PART OF THIS LICENSE. NO USE OF ANY COVERED CODE IS AUTHORIZED
-  HEREUNDER EXCEPT UNDER THIS DISCLAIMER.
-
-7. TERMINATION.
-
-  This License and the rights granted hereunder will terminate
-  automatically if USER fails to comply with terms herein. All
-  sublicenses to the Covered Code which are properly granted shall
-  survive any termination of this License. Provisions which, by their
-  nature, must remain in effect beyond the termination of this License
-  shall survive.
-
-8. LIMITATION OF LIABILITY.
-
-  UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER TORT
-  (INCLUDING NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE
-  TATMAN GAMES, ANY OTHER CONTRIBUTOR, OR ANY DISTRIBUTOR OF COVERED
-  CODE, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE TO USER OR
-  ANY OTHER PERSON FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR
-  CONSEQUENTIAL DAMAGES OF ANY CHARACTER INCLUDING, WITHOUT
-  LIMITATION, DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER
-  FAILURE OR MALFUNCTION, OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR
-  LOSSES, EVEN IF SUCH PARTY SHALL HAVE BEEN INFORMED OF THE
-  POSSIBILITY OF SUCH DAMAGES. THIS LIMITATION OF LIABILITY SHALL NOT
-  APPLY TO LIABILITY FOR DEATH OR PERSONAL INJURY RESULTING FROM SUCH
-  PARTY'S NEGLIGENCE TO THE EXTENT APPLICABLE LAW PROHIBITS SUCH
-  LIMITATION. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR
-  LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THAT EXCLUSION
-  AND LIMITATION MAY NOT APPLY TO USER.
-
-
-9. U.S. GOVERNMENT END USERS,
-
-  The Covered Code is a "commercial item," as that term is defined in
-  48 C.F.R. 2.101 (Oct. 1995). consisting of "commercial computer
-  software" and "commercial computer software documentation," as such
-  terms are used in 48 C.F.R. 12.212 (Sept. 1995). Consistent with 48
-  C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4 (June
-  1995), all U.S. Government End Users acquire Covered Code with only
-  those rights set forth herein.
-
-10. MISCELLANEOUS.
-
-  This License represents the complete agreement concerning subject
-  matter hereof. Nothing in this AGREEMENT shall be construed as
-  conferring by implication, estoppel or otherwise any license or
-  rights other than those granted in this License. If any provision of
-  this License is held to be unenforceable, such provision shall be
-  reformed only to the extent necessary to make it enforceable. This
-  License shall be governed by Utah law provisions (except to the
-  extent applicable law, if any, provides otherwise). The application
-  of the United Nations Convention on Contracts for the International
-  Sale of Goods is expressly excluded. Any law or regulation which
-  provides that the language of a contract shall be construed against
-  the drafter shall not apply to this License.
-
-EXHIBIT A.
-
-The contents of this file are subject to the TATMAN GAMES Public
-License (the "License"); you may not use this file except in
-compliance with the License.
-
-Software distributed under the License is distributed on an "AS IS"
-basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.  See
-the License for the specific language governing rights and limitations
-under the License.
-
-The Original Source Code is "Corn_Theory", released Nov 25, 2019. [repo](https://github.com/tatmanblue/Corn_Theory)
-
-The Original Source Code was developed by Matthew Raffel aka TATMAN GAMES.
-Portions created by TATMAN GAMES are Copyright (C) 2020 TATMAN GAMES. All Rights Reserved.
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
