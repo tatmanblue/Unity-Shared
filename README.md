@@ -3,6 +3,8 @@
 Unity project for building framework for UI input handling.
 
 ## Projects
+The following libraries are built in this project.  
+
 [Common](https://github.com/tatmanblue/UI-Input/tree/main/Assets/Common)  
 [DebugConsole](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI)  
 [Popup Manager](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
@@ -11,8 +13,8 @@ Unity project for building framework for UI input handling.
 Unity Game.   RPG/Open world style play in a modern setting.  For Windows, MacOS, Linux
 
 # License
-The license included applies only to the files in this repo.   As the documentation states below, specific 3rd party assets are required to build and run
-the demos in this project.  The license here does not apply to 3rd party assets. You agree to purchase those assets and abide by their licensing terms. 
+The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states the repo [readme.md](README.md), specific 3rd party assets are required to build and run
+the libraries and demos in this project.  The license here does not apply to 3rd party assets. You agree to purchase those assets and abide by their licensing terms. 
 
 ```
    Copyright 2022 Tatman Games Dba Matthew Raffel
