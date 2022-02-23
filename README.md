@@ -13,7 +13,7 @@ The following libraries are built in this project.
 Unity Game.   RPG/Open world style play in a modern setting.  For Windows, MacOS, Linux
 
 # License
-The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states the repo [readme.md](README.md), specific 3rd party assets are required to build and run
+The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states in the repo [readme.md](README.md), specific 3rd party assets are required to build and run
 the libraries and demos in this project.  The license here does not apply to 3rd party assets. You agree to purchase those assets and abide by their licensing terms. 
 
 ```
