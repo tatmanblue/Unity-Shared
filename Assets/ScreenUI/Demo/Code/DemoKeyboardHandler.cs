@@ -22,7 +22,7 @@ namespace TatmanGames.ScreenUI.Demo
         
         public virtual bool HandleKeyPress()
         {
-            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler");
+            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>(DialogServices.PopupHandler);
             TatmanGames.ScreenUI.Interfaces.ILogger logger = GlobalServicesLocator.Instance.GetServiceByName<TatmanGames.ScreenUI.Interfaces.ILogger>("Logger");
             if (Input.GetKeyDown(KeyCode.D))
             {
