@@ -6,6 +6,8 @@ namespace TatmanGames.DebugUI
     public delegate string GlobalCommandEvent(string command, string[] args);
     public class CommandEngine : IDebugEngine
     {
+        public static readonly string ServiceName = "CommandEngine";
+        
         public List<IDebugCommand> Commands { get; } = new List<IDebugCommand>();
         public event GlobalCommandEvent OnGlobalCommandEvent;
         public event DebugCommandWindowStateChange OnStateChange;

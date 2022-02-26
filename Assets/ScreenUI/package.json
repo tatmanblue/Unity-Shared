@@ -2,7 +2,7 @@
    "description": "a set of tools to help display dialogs in 3d world space",
    "displayName": "Tatman Games Screen UI Kit",
    "name": "com.tatman-games.screenui",
-   "version": "0.0.3",
+   "version": "0.0.4",
    "unity": "2020.3",
   "author": {
     "name": "Matt Raffel",

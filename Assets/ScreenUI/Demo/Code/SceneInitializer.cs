@@ -25,12 +25,10 @@ namespace TatmanGames.ScreenUI.Demo
         {
             var dialogEvents = new PopupEventsManager();
             
-            // TODO:  these should be dynamically determined
-            // TODO: or this scene initializer should not be part of the "distribution" but an example
             ServicesLocator services = GlobalServicesLocator.Instance;
-            services.AddService("PopupHandler", new PopupHandler(dialogEvents));
-            services.AddService("PopupEventsManager", dialogEvents);
-            services.AddService("DialogEvents", dialogEvents);
+            services.AddService(DialogServices.PopupHandler, new PopupHandler(dialogEvents));
+            services.AddService(DialogServices.PopupEventsManager, dialogEvents);
+            services.AddService(DialogServices.DialogEvents, dialogEvents);
             services.AddService("KeyboardHandler",new DemoKeyboardHandler(gameMenuDialog, toolbarPopup));
             services.AddService("Logger", new DebugLogging());
             
@@ -46,9 +44,9 @@ namespace TatmanGames.ScreenUI.Demo
         private bool DialogEventsOnButtonPressed(string dialogName, string buttonId)
         {
             if ("quit" == buttonId)
-                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler")?.CloseDialog();
+                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>(DialogServices.PopupHandler)?.CloseDialog();
             else if ("settings" == buttonId && settingsDialog != null)
-                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler")?.ReplaceDialog(settingsDialog);
+                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>(DialogServices.PopupHandler)?.ReplaceDialog(settingsDialog);
             else
                 GlobalServicesLocator.Instance.GetServiceByName<ILogger>("Logger")?.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
             

@@ -22,7 +22,7 @@ namespace TatmanGames.DebugUI
 
         private void Awake()
         {
-            GlobalServicesLocator.Instance.AddService("CommandEngine", _engine);
+            GlobalServicesLocator.Instance.AddService(CommandEngine.ServiceName, _engine);
             _engine.OnGlobalCommandEvent += EngineOnGlobalCommandEvent;
             AddGlobalCommands();
         }
