@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace TatmanGames.Common.ServiceLocator
 {
@@ -14,15 +16,33 @@ namespace TatmanGames.Common.ServiceLocator
         /// <summary>
         /// TODO: should T be typed to class or a base type
         /// </summary>
-        /// <param name="name"></param>
         /// <param name="instance"></param>
         /// <typeparam name="T"></typeparam>
         /// <exception cref="ServiceLocatorException"></exception>
-        public void AddService<T>(string name, T instance) 
+        public void AddService<T>(T instance)
         {
+            string name = GetServiceName<T>();
             if (true == services.ContainsKey(name))
                 throw new ServiceLocatorException($"{name} exists");
 
+            services.Add(name, instance);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="instance"></param>
+        /// <typeparam name="T"></typeparam>
+        public void AddReplaceService<T>(T instance)
+        {
+            string name = GetServiceName<T>();
+            if (true == services.ContainsKey(name))
+            {
+                services[name] = instance;
+                return;
+            }
+            
             services.Add(name, instance);
         }
 
@@ -41,9 +61,25 @@ namespace TatmanGames.Common.ServiceLocator
             return (T) services[name];
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetService<T>()
+        {
+            string name = GetServiceName<T>();
+            return GetServiceByName<T>(name);
+        }
+
         public List<string> ListAllServices()
         {
             return new List<string>(services.Keys.ToArray());
+        }
+
+        private string GetServiceName<T>()
+        {
+            return typeof(T).FullName;
         }
     }
 }

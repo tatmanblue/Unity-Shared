@@ -26,13 +26,13 @@ namespace TatmanGames.ScreenUI.Demo
             var dialogEvents = new PopupEventsManager();
             
             ServicesLocator services = GlobalServicesLocator.Instance;
-            services.AddService(DialogServices.PopupHandler, new PopupHandler(dialogEvents));
-            services.AddService(DialogServices.PopupEventsManager, dialogEvents);
-            services.AddService(DialogServices.DialogEvents, dialogEvents);
-            services.AddService("KeyboardHandler",new DemoKeyboardHandler(gameMenuDialog, toolbarPopup));
-            services.AddService("Logger", new DebugLogging());
+            services.AddService<IPopupHandler>(new PopupHandler(dialogEvents));
+            services.AddService<IPopupEventsManager>(dialogEvents);
+            services.AddService<IDialogEvents>(dialogEvents);
+            services.AddService<IKeyboardHandler>(new DemoKeyboardHandler(gameMenuDialog, toolbarPopup));
+            services.AddService<TatmanGames.ScreenUI.Interfaces.ILogger>(new DebugLogging());
             
-            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>("PopupHandler");
+            IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetService<IPopupHandler>();
             popupHandler.Canvas = GetComponent<Canvas>();
             popupHandler.AudioSource = audioSource;
             popupHandler.OpenSound = openSound;
@@ -44,18 +44,18 @@ namespace TatmanGames.ScreenUI.Demo
         private bool DialogEventsOnButtonPressed(string dialogName, string buttonId)
         {
             if ("quit" == buttonId)
-                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>(DialogServices.PopupHandler)?.CloseDialog();
+                GlobalServicesLocator.Instance.GetService<IPopupHandler>()?.CloseDialog();
             else if ("settings" == buttonId && settingsDialog != null)
-                GlobalServicesLocator.Instance.GetServiceByName<IPopupHandler>(DialogServices.PopupHandler)?.ReplaceDialog(settingsDialog);
+                GlobalServicesLocator.Instance.GetService<IPopupHandler>()?.ReplaceDialog(settingsDialog);
             else
-                GlobalServicesLocator.Instance.GetServiceByName<ILogger>("Logger")?.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
+                GlobalServicesLocator.Instance.GetService<ILogger>()?.LogWarning($"dialog command {buttonId} for dialog {dialogName} not handled.");
             
             return false;
         }
 
         private void Update()
         {
-            GlobalServicesLocator.Instance.GetServiceByName<IKeyboardHandler>("KeyboardHandler")?.HandleKeyPress();
+            GlobalServicesLocator.Instance.GetService<IKeyboardHandler>()?.HandleKeyPress();
         }
     }
 

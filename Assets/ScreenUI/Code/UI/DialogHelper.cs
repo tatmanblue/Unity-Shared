@@ -14,7 +14,7 @@ namespace TatmanGames.ScreenUI.UI
     {
         public void DoButtonClick(string buttonId)
         {
-            IPopupEventsManager service = GlobalServicesLocator.Instance.GetServiceByName<IPopupEventsManager>("PopupEventsManager");
+            IPopupEventsManager service = GlobalServicesLocator.Instance.GetService<IPopupEventsManager>();
             service?.FireButtonPressedEvent(GetDialogName(this.gameObject), buttonId);
         }
         
