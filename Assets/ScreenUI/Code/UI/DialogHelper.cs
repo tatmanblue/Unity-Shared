@@ -7,7 +7,6 @@ using UnityEngine;
 namespace TatmanGames.ScreenUI.UI
 {
     /// <summary>
-    /// TODO: is part of the demo
     /// Attach this to UI so that dialog events can be sent out as C# events
     /// </summary>
     public class DialogHelper : MonoBehaviour
