@@ -1,4 +1,4 @@
-﻿namespace TatmanGames.ScreenUI.Interfaces
+﻿namespace TatmanGames.Common.Interfaces
 {
     /// <summary>
     /// this seems like its not needed and need to look into unity ILogger interface

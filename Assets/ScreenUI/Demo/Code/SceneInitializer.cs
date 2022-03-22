@@ -4,7 +4,7 @@ using TatmanGames.ScreenUI.Interfaces;
 using TatmanGames.ScreenUI.Keyboard;
 using TatmanGames.ScreenUI.Scene;
 using TatmanGames.ScreenUI.UI;
-using ILogger = TatmanGames.ScreenUI.Interfaces.ILogger;
+using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.ScreenUI.Demo
 {
@@ -30,7 +30,7 @@ namespace TatmanGames.ScreenUI.Demo
             services.AddService<IPopupEventsManager>(dialogEvents);
             services.AddService<IDialogEvents>(dialogEvents);
             services.AddService<IKeyboardHandler>(new DemoKeyboardHandler(gameMenuDialog, toolbarPopup));
-            services.AddService<TatmanGames.ScreenUI.Interfaces.ILogger>(new DebugLogging());
+            services.AddService<TatmanGames.Common.Interfaces.ILogger>(new DebugLogging());
             
             IPopupHandler popupHandler = GlobalServicesLocator.Instance.GetService<IPopupHandler>();
             popupHandler.Canvas = GetComponent<Canvas>();

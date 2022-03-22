@@ -7,7 +7,7 @@ The following libraries are built in this project.
 
 [Common](https://github.com/tatmanblue/UI-Input/tree/main/Assets/Common)  
 [DebugConsole](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI)  
-[Popup Manager](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
+[ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
 Unity Game.   
@@ -40,7 +40,7 @@ On-going/Active
 
 This library is in prototype, early development stage.
 
-edited: 2022.02.19
+edited: 2022.03.22
 
 ## Documentation
 [TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  

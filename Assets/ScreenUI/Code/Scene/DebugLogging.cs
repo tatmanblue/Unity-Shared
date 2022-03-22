@@ -4,7 +4,7 @@ using Debug = UnityEngine.Debug;
 
 namespace TatmanGames.ScreenUI.Scene
 {
-    public class DebugLogging : TatmanGames.ScreenUI.Interfaces.ILogger
+    public class DebugLogging : TatmanGames.Common.Interfaces.ILogger
     {
         public void LogWarning(string statement)
         {

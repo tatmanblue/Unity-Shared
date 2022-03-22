@@ -33,8 +33,10 @@ namespace TatmanGames.ScreenUI.Interfaces
     }
 
     /// <summary>
-    /// sources interested in creeating dialog and popevent should check for implementation
-    /// added to the ServiceLocator
+    /// Handler for firing off Dialog open/closed events as well as button click events
+    /// in a dialog.
+    ///
+    /// Use DialogHelper to find IPopupEventsManager and fire off button clicks (pressed)
     /// </summary>
     public interface IPopupEventsManager
     {
