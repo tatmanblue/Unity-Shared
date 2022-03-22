@@ -2,8 +2,12 @@
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace TatmanGames.ScreenUI.Scene
+namespace TatmanGames.Common.Scene
 {
+    /// <summary>
+    /// a logger to unity debug window
+    /// TODO not sure we need this, there is unity logging, need to look into it.
+    /// </summary>
     public class DebugLogging : TatmanGames.Common.Interfaces.ILogger
     {
         public void LogWarning(string statement)
