@@ -10,7 +10,7 @@ The following libraries are built in this project.
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
-Unity Game.   
+Unity Game.   Built with Unity 2021.03 LTS
 
 # License
 The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states in the repo [readme.md](README.md), specific 3rd party assets are required to build and run
@@ -40,7 +40,7 @@ On-going/Active
 
 This library is in prototype, early development stage.
 
-edited: 2022.03.22
+edited: 2022.04.16
 
 ## Documentation
 [TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  
