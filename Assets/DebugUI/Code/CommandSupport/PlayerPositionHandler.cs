@@ -6,6 +6,9 @@ using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.DebugUI.CommandSupport
 {
+    /// <summary>
+    /// Handles functionality for moving Player object around by command
+    /// </summary>
     public class PlayerPositionHandler : MonoBehaviour
     {
         private GameObject[] gos;

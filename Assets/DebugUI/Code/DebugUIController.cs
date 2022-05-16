@@ -53,7 +53,10 @@ namespace TatmanGames.DebugUI
                         AddMessageToConsole(inputText.text);
                         string result = _engine.HandleCommand(inputText.text);
                         if (!string.IsNullOrEmpty(result))
+                        {
                             AddMessageToConsole(result);
+                        }
+
                         inputText.text = "";
                     }
                 }

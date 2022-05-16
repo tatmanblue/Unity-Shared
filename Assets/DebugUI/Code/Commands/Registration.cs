@@ -7,6 +7,9 @@ using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.DebugUI.Commands
 {
+    /// <summary>
+    /// Automatic registration of commands in this library
+    /// </summary>
     public class Registration
     {
         public static void Initialize()
@@ -26,6 +29,8 @@ namespace TatmanGames.DebugUI.Commands
             IDebugCommand noLogCommand = new NoLoggingCommand();
             IDebugCommand playerPositionCommand = new PlayerPositionCommand();
             
+            // TODO: there is going to be a point where we do not want this in the application 
+            // TODO: such as release mode
             engine.AddCommand(debugLogCommand);
             engine.AddCommand(noLogCommand);
             engine.AddCommand(playerPositionCommand);
@@ -37,9 +42,13 @@ namespace TatmanGames.DebugUI.Commands
 
         private static string OnPlayerPositionCommand(string[] args)
         {
-            if (0 == args?.Length)
+
+            if (1 == args?.Length)      // dirty assumption 1st element is PlayerPos2
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (null == player)
+                    return "There is no player object";
+                
                 if (null != player.GetComponent<PlayerPositionHandler>())
                     return "PositionHandler exists";
                 
