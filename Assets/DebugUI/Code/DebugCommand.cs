@@ -28,13 +28,6 @@ namespace TatmanGames.DebugUI
         }
     }
 
-    public class GenericCommand : DebugCommand
-    {
-        public GenericCommand(string word, string desc) : base()
-        {
-            Word = word;
-            Description = desc;
-        }
-    }
+
     
 }
