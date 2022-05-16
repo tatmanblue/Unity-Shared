@@ -15,7 +15,7 @@ namespace TatmanGames.DebugUI.Demo
             if (null == engine)
             {
                 engine = new CommandEngine();
-                GlobalServicesLocator.Instance.AddService(engine);
+                GlobalServicesLocator.Instance.AddService<IDebugEngine>(engine);
             }
             
             engine.AddCommand(new DemoCustomCommand());

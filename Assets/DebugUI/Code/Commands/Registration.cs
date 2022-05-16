@@ -37,26 +37,8 @@ namespace TatmanGames.DebugUI.Commands
             
             debugLogCommand.OnCommand += OnDebugLogCommand;
             noLogCommand.OnCommand += OnNoLogCommand;
-            playerPositionCommand.OnCommand += OnPlayerPositionCommand;
-        }
-
-        private static string OnPlayerPositionCommand(string[] args)
-        {
-
-            if (1 == args?.Length)      // dirty assumption 1st element is PlayerPos2
-            {
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (null == player)
-                    return "There is no player object";
-                
-                if (null != player.GetComponent<PlayerPositionHandler>())
-                    return "PositionHandler exists";
-                
-                player.AddComponent<PlayerPositionHandler>();
-                return "PositionHandler added";
-            }
-
-            return "PositionHandler command not understood";
+            
+            (playerPositionCommand as PlayerPositionCommand).RegisterSelfHandler();
         }
 
         private static string OnNoLogCommand(string[] args)

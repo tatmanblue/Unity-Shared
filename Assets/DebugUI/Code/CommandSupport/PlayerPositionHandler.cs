@@ -1,4 +1,5 @@
-﻿using TatmanGames.Common.ServiceLocator;
+﻿using TatmanGames.Common;
+using TatmanGames.Common.ServiceLocator;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -16,57 +17,41 @@ namespace TatmanGames.DebugUI.CommandSupport
         private Vector3 jumpTo = Vector3.zero;
         private int jumpIndex = -1;
         private bool doTeleport = false;
+        private bool useKeyboardCommands = true;
+
+        public string JumpsTag { get; set; } = "JumpPoint";
+        public string HomeTag { get; set; } = "StartHere";
+        public string PlayerTag { get; set; } = "Player";
 
         private void Start()
         {
-            gos = GameObject.FindGameObjectsWithTag("JumpPoint");
-            player = GameObject.FindGameObjectWithTag("Player");
+            gos = GameObject.FindGameObjectsWithTag(JumpsTag);
+            player = GameObject.FindGameObjectWithTag(PlayerTag);
         }
 
         private void Update()
         {
-            ILogger logger = GlobalServicesLocator.Instance.GetService<ILogger>();
             ShowPlayerPosition();
             
             if (true == doTeleport)
                 return;
 
+            if (false == useKeyboardCommands)
+                return;
+            
             if (true == Keyboard.current.jKey.wasPressedThisFrame)
             {
-                GameObject closest = FindClosestJumpPoint();
-                if (null == closest)
-                    return;
-                
-                jumpTo = closest.transform.position;
-                doTeleport = true;
-                logger?.Log($"queuing closest teleport x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
-
+                SetJumpToClosest();
             }
 
             if (true == Keyboard.current.nKey.wasPressedThisFrame)
             {
-                GameObject[] allPoints = GameObject.FindGameObjectsWithTag("JumpPoint");
-                jumpIndex++;
-                if (jumpIndex >= allPoints.Length)
-                    jumpIndex = 0;
-
-                jumpTo = allPoints[jumpIndex].transform.position;
-                doTeleport = true;
-                logger?.Log($"queuing next teleport x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z} {allPoints[jumpIndex].name}/({jumpIndex})");
+                SetJumpToNext();
             }
 
             if (true == Keyboard.current.homeKey.wasPressedThisFrame)
             {
-                GameObject home = GameObject.Find("StartHere");
-                if (null == home)
-                {
-                    Debug.LogWarning("Couldnt find home object");
-                    return;
-                }
-
-                jumpTo = home.transform.position;
-                doTeleport = true;
-                logger?.Log($"queuing returning to home x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
+                SetJumpToHome();
             }
         }
 
@@ -74,13 +59,11 @@ namespace TatmanGames.DebugUI.CommandSupport
         {
             if (true == doTeleport)
             {
-                ILogger logger = GlobalServicesLocator.Instance.GetService<ILogger>();
-                logger?.Log($"performing teleport to x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
+                Log($"performing teleport to x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
                 doTeleport = false;
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<CharacterController>().enabled = false;
+                SetPlayerEnabled(false);
                 player.transform.position = jumpTo;
-                player.GetComponent<CharacterController>().enabled = true;
+                SetPlayerEnabled(true);
                 jumpTo = Vector3.zero;
             }
         }
@@ -103,11 +86,89 @@ namespace TatmanGames.DebugUI.CommandSupport
             return closest;
         }
 
+        private void SetPlayerEnabled(bool state)
+        {
+            CharacterController controller = player.GetComponent<CharacterController>();
+            if (null == controller) return;
+            controller.enabled = state;
+        }
+
         private void ShowPlayerPosition()
         {
-            TMP_Text text = GameObject.Find("PositionText").GetComponent<TMP_Text>();
+            TMP_Text text = GameObject.Find("PositionText")?.GetComponent<TMP_Text>();
+            if (null == text)
+                return;
+            
             Vector3 location = player.transform.position;
             text.text = $"X: {location.x} Y:{location.y} Z:{location.z}";
+        }
+
+        private void Log(string msg)
+        {
+            try
+            {
+                ILogger logger = GlobalServicesLocator.Instance.GetService<ILogger>();
+                logger?.Log(msg);
+            } catch (ServiceLocatorException) {}
+        }
+
+        private void LogWarning(string msg)
+        {
+            try
+            {
+                ILogger logger = GlobalServicesLocator.Instance.GetService<ILogger>();
+                logger?.LogWarning(msg);
+            } catch (ServiceLocatorException) {}
+            
+        }
+        
+        public void SetJumpToHome()
+        {
+            GameObject home = GameObject.Find(HomeTag);
+            if (null == home)
+            {
+                LogWarning("Couldn't find home object");
+                return;
+            }
+
+            jumpTo = home.transform.position;
+            doTeleport = true;
+            Log($"queuing returning to home x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
+        }
+
+        public void SetJumpToNext()
+        {
+            if (0 == gos.Length)
+            {
+                LogWarning("no jumpTo objects found");
+                return;
+            }
+                    
+            jumpIndex++;
+            if (jumpIndex >= gos.Length)
+                jumpIndex = 0;
+
+            jumpTo = gos[jumpIndex].transform.position;
+            doTeleport = true;
+            Log($"queuing next teleport x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z} {gos[jumpIndex].name}/({jumpIndex})");
+
+        }
+
+        public void SetJumpToClosest()
+        {
+            if (0 == gos.Length)
+            {
+                LogWarning("no jumpTo objects found");
+                return;
+            }
+
+            GameObject closest = FindClosestJumpPoint();
+            if (null == closest)
+                return;
+                
+            jumpTo = closest.transform.position;
+            doTeleport = true;
+            Log($"queuing closest teleport x:{jumpTo.x} y:{jumpTo.y} z:{jumpTo.z}");
         }
     }
 }
