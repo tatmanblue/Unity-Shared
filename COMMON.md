@@ -5,7 +5,7 @@ This library contains functionality that is usuable in wide range of unity proje
 ## Functions
 | Function | Purpose |
 | -------- | ------- |
-| [ServicesLocator](https://github.com/tatmanblue/UI-Input/blob/main/Assets/Common/Code/ServiceLocator/GlobalServicesLocator.cs) | A easy to use DI system following the standard services location patterns| 
+| [ServicesLocator](https://github.com/tatmanblue/UI-Input/blob/main/Assets/Common/Code/ServiceLocator/GlobalServicesLocator.cs) | A easy to use IOC system following the standard services location patterns| 
 
 ## Work in progress
 Please note, it is possible these functions will go away
