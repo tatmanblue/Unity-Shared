@@ -19,9 +19,12 @@ The library provides a couple of commands, mostly as examples but you might find
 
 | Command          | Function            |
 |------------------|---------------------|
-| DebugLog         |                     |
-| NoLog            |                     |
-| PlayerPos        |                     |
+| DebugLog         | Sends all logging to Unity debug window |
+| NoLog            | Effectively turns off all logging |
+| PlayerPos        | Manipulate player character position.  Please read beloew for more details |
+
+
+### PlayerPos Command
 
 
 
