@@ -14,7 +14,10 @@ You can use this prefab and controller class in your projects; or you can create
 
 ## Command Library
 
-The library provides a couple of commands, mostly as examples but you might find them useful as well.
+The library provides a couple of commands, mostly as examples but you might find them useful as well.  Other than
+built in commands, commands have to be installed to use them.   Installation is usually just typing the command name.
+
+EG: `DebugLog`
 
 
 | Command          | Function            |
