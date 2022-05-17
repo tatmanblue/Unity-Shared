@@ -16,13 +16,13 @@ You can use this prefab and controller class in your projects; or you can create
 
 The library provides a couple of commands, mostly as examples but you might find them useful as well.
 
-|------------------|---------------------|
+
 | Command          | Function            |
 |------------------|---------------------|
 | DebugLog         |                     |
 | NoLog            |                     |
 | PlayerPos        |                     |
-|------------------|---------------------| 
+
 
 
 ## Creating your own commands
