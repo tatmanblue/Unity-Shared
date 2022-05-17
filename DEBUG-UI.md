@@ -22,11 +22,31 @@ The library provides a couple of commands, mostly as examples but you might find
 | DebugLog         | Sends all logging to Unity debug window |
 | NoLog            | Effectively turns off all logging |
 | PlayerPos        | Manipulate player character position.  Please read beloew for more details |
+| help             | high level help (built in) |
+| clear            | clears the history (built in)|
 
 
 ### PlayerPos Command
+This command allows controller the player charactor through the Debug-Ui.  Below are the arguments accepted. To use
+type `PlayerPos {arguments}`.  
+
+| Arguments        | Function            |
+|------------------|---------------------|
+| help             | lists these arguments |
+| remove           | unloads this command |
+| (no argumments   | installs this command |
+| jumpTo           | performs functions moving player character to another location |
+| useKeyboard      | toggles use of keyboard shortcuts for jumpTo commands |
+
+### JumpTo
+```
+   missing information at this time
+```
 
 
 
 ## Creating your own commands
+```
+   missing information at this time
+```
 
