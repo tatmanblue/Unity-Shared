@@ -6,7 +6,7 @@ Unity project for building framework for UI input handling.
 The following libraries are built in this project.  
 
 [Common](https://github.com/tatmanblue/UI-Input/tree/main/Assets/Common)  
-[DebugUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI)[Docs](https://github.com/tatmanblue/UI-Input/blob/main/DEBUG-UI.md)   
+[DebugUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI) [Docs](https://github.com/tatmanblue/UI-Input/blob/main/DEBUG-UI.md)   
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
