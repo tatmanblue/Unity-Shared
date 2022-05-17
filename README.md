@@ -5,8 +5,8 @@ Unity project for building framework for shared behaviors, debugging, and UI inp
 ## Projects
 The following libraries are built in this project.  
 
-[Common](https://github.com/tatmanblue/UI-Input/tree/main/Assets/Common) [Docs](https://github.com/tatmanblue/UI-Input/blob/main/COMMON.md)  
-[DebugUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI) [Docs](https://github.com/tatmanblue/UI-Input/blob/main/DEBUG-UI.md)   
+[Common](https://github.com/tatmanblue/UI-Input/tree/main/Assets/Common) ([Docs](https://github.com/tatmanblue/UI-Input/blob/main/COMMON.md))  
+[DebugUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/DebugUI) ([Docs](https://github.com/tatmanblue/UI-Input/blob/main/DEBUG-UI.md))   
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
