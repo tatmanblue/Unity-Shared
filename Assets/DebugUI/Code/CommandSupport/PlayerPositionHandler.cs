@@ -17,11 +17,11 @@ namespace TatmanGames.DebugUI.CommandSupport
         private Vector3 jumpTo = Vector3.zero;
         private int jumpIndex = -1;
         private bool doTeleport = false;
-        private bool useKeyboardCommands = true;
 
         public string JumpsTag { get; set; } = "JumpPoint";
         public string HomeTag { get; set; } = "StartHere";
         public string PlayerTag { get; set; } = "Player";
+        public bool UseKeyboardCommands { get; set; } = true;
 
         private void Start()
         {
@@ -36,7 +36,7 @@ namespace TatmanGames.DebugUI.CommandSupport
             if (true == doTeleport)
                 return;
 
-            if (false == useKeyboardCommands)
+            if (false == UseKeyboardCommands)
                 return;
             
             if (true == Keyboard.current.jKey.wasPressedThisFrame)

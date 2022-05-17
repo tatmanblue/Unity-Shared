@@ -51,20 +51,28 @@ namespace TatmanGames.DebugUI.Commands
             string arg1 = args[1];
             if ("help" == arg1)
             {
-                return "PlayerPos arguments:  help, remove, jumpTo";
+                return "PlayerPos arguments:  help, remove, jumpTo, useKeyboard";
             }
             
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (null == player)
                 return "There is no player object";
-            
-            if (null == player.GetComponent<PlayerPositionHandler>())
+
+            PlayerPositionHandler handler = player.GetComponent<PlayerPositionHandler>(); 
+            if (null == handler)
                 return "PositionHandler is not installed";
 
             if ("remove" == arg1)
             {
                 GameObject.Destroy(player.GetComponent<PlayerPositionHandler>());
                 return "PositionHandler removed";
+            }
+
+            if ("useKeyboard" == arg1)
+            {
+                bool useKeyboard = handler.UseKeyboardCommands;
+                handler.UseKeyboardCommands = !useKeyboard;
+                return $"PlayerHandler UseKeyboard = {!useKeyboard}";
             }
             
             return "PositionHandler command argument not understood";
