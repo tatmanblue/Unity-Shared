@@ -1,6 +1,6 @@
 # UI-Input
 
-Unity project for building framework for UI input handling.
+Unity project for building framework for shared behaviors, debugging, and UI input handling.
 
 ## Projects
 The following libraries are built in this project.  
@@ -40,9 +40,10 @@ On-going/Active
 
 This library is in prototype, early development stage.
 
-edited: 2022.04.16
+edited: 2022.05.17
 
 ## Documentation
+[Debug-UI](https://github.com/tatmanblue/UI-Input/blob/main/DEBUG-UI.md)     
 [TextMesh Pro Font Asset Creation](http://digitalnativestudios.com/textmeshpro/docs/font/)  
 
 ## Assets used
