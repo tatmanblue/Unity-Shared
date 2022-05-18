@@ -40,7 +40,7 @@ On-going/Active
 
 This library is in prototype, early development stage.
 
-edited: 2022.05.17
+edited: 2022.05.19
 
 ## Documentation
 [Common](https://github.com/tatmanblue/UI-Input/blob/main/COMMON.md)  
