@@ -10,7 +10,7 @@ The following libraries are built in this project.
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
-Unity Game.   Built with Unity 2021.03 LTS
+Unity Game.   Built with Unity 2021.03 LTS  (currently 2021.03.9F)
 
 # License
 The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states in the repo [readme.md](README.md), specific 3rd party assets are required to build and run
