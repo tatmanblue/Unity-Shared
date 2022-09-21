@@ -10,7 +10,7 @@ The following libraries are built in this project.
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
-Unity Game.   Built with Unity 2021.03 LTS  (currently 2021.03.9F)
+Unity Asset/Library. Built with Unity 2021.03 LTS  (currently 2021.03.10f1)
 
 # License
 The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states in the repo [readme.md](README.md), specific 3rd party assets are required to build and run
@@ -51,3 +51,10 @@ edited: 2022.09.21
 [Procedural Image](https://assetstore.unity.com/packages/tools/gui/procedural-ui-image-52200)  
 TextMesh Pro  
 [UI Builder](https://assetstore.unity.com/packages/2d/gui/ui-builder-29757)  
+
+## Setup Notes
+
+Simplest way to know all of the assets have correctly imported is to run the TestUI scene in the ./ScreenUI/Demo/Scene directory.  Once the scene
+has started, press `d`.  This will open a dialog with a border called `Game Menu` and two buttons each with a border and text, `Quit` and `Settings`.
+
+
