@@ -49,7 +49,12 @@ type `PlayerPos {arguments}`.
 
 
 ## Creating your own commands
-```
-   missing information at this time
-```
+You can create your own commands and add them to Debug-Ui.  Your commands can do pretty much anything any other unity code would do.
+
+1. To start, implement [`IDebugCommand` interface](https://github.com/tatmanblue/UI-Input/blob/main/Assets/DebugUI/Code/Interfaces/IDebugCommand.cs).  
+2. Alternatively you can derive your type from [`Generic Command`](https://github.com/tatmanblue/UI-Input/blob/main/Assets/DebugUI/Code/GenericCommand.cs)
+3. Add the command handler to engine, as shown in [this example](https://github.com/tatmanblue/UI-Input/blob/4578ef56d9232f2f0cdc741de220983ac88a1309/Assets/DebugUI/Demo/Code/DemoCustomCommandInitializer.cs#L21).
+
+At this time, there is no automatic loading of commands, nor runtime loading of assemblies.  The code must exist in the project at compile time.
+
 
