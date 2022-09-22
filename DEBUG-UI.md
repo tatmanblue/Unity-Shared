@@ -4,6 +4,9 @@ Debug UI library provides two things:
 1. UI for interacting with the scene, at runtime, using a command line like interface
 2. Framework for custom commands that work in the UI.  Referred to as the debug engine.
 
+## Installation notes
+These Unity packages need to be installed:  
+[Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.4/manual/index.html)  
 
 ## The UI
 
