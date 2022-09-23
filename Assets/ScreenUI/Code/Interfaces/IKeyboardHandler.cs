@@ -3,7 +3,8 @@
 namespace TatmanGames.ScreenUI.Interfaces
 {
     /// <summary>
-    /// TODO: only used in ScreenUI\Demo code base.  Maybe time to remove this from the library itself
+    /// Allows for separation of keyboard handling from GameObject, which in turn,
+    /// allows for dynamic injection/substitution of keyboard handlers during game play
     /// </summary>
     public interface IKeyboardHandler
     {
