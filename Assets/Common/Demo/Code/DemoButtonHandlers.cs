@@ -4,12 +4,16 @@ using TatmanGames.Common;
 using TatmanGames.Common.Interfaces;
 using TatmanGames.Common.Scene;
 using TatmanGames.Common.ServiceLocator;
+using TMPro;
 using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace Common.Demo.Code
 {
     public class DemoButtonHandlers : MonoBehaviour
     {
+        [SerializeField] private TMP_InputField Interval;
+        [SerializeField] private TMP_InputField NotificationsPerInterval;
+        
         public void Start()
         {
             Log("DemoButtonHandlers is running");
@@ -18,7 +22,9 @@ namespace Common.Demo.Code
         public void Go()
         {
             Log("Starting GameTimeManager");
-            GameTimeManager mgr = new GameTimeManager(10, 1);
+            int interval = GetInterval();
+            int notificationRate = GetIntervalNotificationRate();
+            GameTimeManager mgr = new GameTimeManager(interval, notificationRate);
             mgr.OnGameTimeInterval += OnGameTimeInterval;
             GlobalServicesLocator.Instance.AddReplaceService<IGameTimeManager>(mgr);
             mgr.Start();
@@ -54,6 +60,16 @@ namespace Common.Demo.Code
             {
                 Console.WriteLine($"{message} - no logger defined");
             }
+        }
+
+        private int GetInterval()
+        {
+            return Convert.ToInt32(Interval.text);
+        }
+
+        private int GetIntervalNotificationRate()
+        {
+            return Convert.ToInt32(NotificationsPerInterval.text);
         }
     }
 }

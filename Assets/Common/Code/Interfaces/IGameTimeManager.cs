@@ -7,6 +7,7 @@ namespace TatmanGames.Common.Interfaces
     ///
     /// Terms:
     ///     Interval is some time space that is meaningful to the player
+    ///     Expired means when time lapsed = Interval.
     /// </summary>
     public interface IGameTimeManager
     {

@@ -14,8 +14,17 @@ namespace TatmanGames.Common.Scene
         /// EG a game day.  if its 60 then one game day occurs every 60 seconds
         /// </summary>
         public int IntervalInSeconds { get; private set; }
+        /// <summary>
+        /// how many OnGameTimeInterval events will be fired per interval
+        /// eg: if interval is 60 seconds and NotificationPerInterval is 10
+        /// then OnGameTimeInterval will be fired every 6 seconds. if the number
+        /// notifications cannot be equally divided into the interval, when the interval
+        /// expires another event will be fired and the NotificationPerInterval restart
+        /// </summary>
         public int NotificationPerInterval { get; private set; }
 
+        public event GameTimeInterval OnGameTimeInterval;
+        
         private int intervalId = 0;
         private int intervalNotificationId = 0;
         private bool trackingTime = false;
@@ -103,6 +112,5 @@ namespace TatmanGames.Common.Scene
             interval(data);
         }
 
-        public event GameTimeInterval OnGameTimeInterval;
     }
 }
