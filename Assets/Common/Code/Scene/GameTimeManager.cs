@@ -102,6 +102,7 @@ namespace TatmanGames.Common.Scene
                 // IntervalSeconds / HeartbeatPerInterval is the number of seconds between
                 // Heartbeat events.
                 int heartbeatSeconds = IntervalInSeconds / HeartbeatPerInterval;
+                span = now - lastHeartbeatTime;
                 computedIntervalId = (int) Math.Floor(span.TotalSeconds / heartbeatSeconds);
                 if (computedIntervalId >= 1)
                 {
