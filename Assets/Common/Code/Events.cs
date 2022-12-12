@@ -2,10 +2,11 @@
 {
     public class GameTimeIntervalUpdate
     {
-        public int TotalSeconds { get; private set; }
-        public int IntervalId { get; private set; }
-        public int IntervalNotificationId { get; private set; }
-        public GameTimeManagerState State { get; private set; }
+        public int TotalSeconds { get; protected internal set; }
+        public int IntervalId { get; protected internal  set; }
+        public int IntervalNotificationId { get; protected internal  set; }
+        public GameTimeManagerState State { get; protected internal  set; }
+        public GameTimeEventType EventType { get; protected internal set; }
 
         public GameTimeIntervalUpdate(int totalSeconds, int intervalId, int intervalNotificationId, GameTimeManagerState state)
         {

@@ -19,9 +19,9 @@ namespace TatmanGames.Common.Scene
         /// eg: if interval is 60 seconds and NotificationPerInterval is 10
         /// then OnGameTimeInterval will be fired every 6 seconds. if the number
         /// notifications cannot be equally divided into the interval, when the interval
-        /// expires another event will be fired and the NotificationPerInterval restart
+        /// expires another event will be fired and the HeartbeatPerInterval restart
         /// </summary>
-        public int NotificationPerInterval { get; private set; }
+        public int HeartbeatPerInterval { get; private set; }
 
         public event GameTimeInterval OnGameTimeInterval;
         
@@ -30,12 +30,13 @@ namespace TatmanGames.Common.Scene
         private bool trackingTime = false;
         private bool checkingTime = false;
         private DateTime startTime;
-        private DateTime lastTime;
+        private DateTime lastIntervalTime;          // last time the game interval was noted
+        private DateTime lastHeartbeatTime;         // last time the heartbeat was noted
 
-        public GameTimeManager(int intervalInSeconds, int notificationPerInterval)
+        public GameTimeManager(int intervalInSeconds, int heartbeatPerInterval)
         {
             IntervalInSeconds = intervalInSeconds;
-            NotificationPerInterval = notificationPerInterval;
+            HeartbeatPerInterval = heartbeatPerInterval;
         }
 
         public void Start()
@@ -45,7 +46,8 @@ namespace TatmanGames.Common.Scene
 
             intervalId = 1;
             startTime = DateTime.Now;
-            lastTime = startTime;
+            lastIntervalTime = startTime;
+            lastHeartbeatTime = startTime;
             trackingTime = true;
         }
 
@@ -63,7 +65,7 @@ namespace TatmanGames.Common.Scene
         public void Stop()
         {
             trackingTime = false;
-            FireGameTimeIntervalEvent(GameTimeManagerState.Stopped);
+            FireGameTimeIntervalEvent(GameTimeManagerState.Stopped, GameTimeEventType.StateChange);
         }
 
         public void Update()
@@ -78,20 +80,35 @@ namespace TatmanGames.Common.Scene
 
                 checkingTime = true;
                 DateTime now = DateTime.Now;
-                TimeSpan span = now - lastTime;
+                TimeSpan span = now - lastIntervalTime;
 
                 // span.TotalSeconds / IntervalInSeconds tells us if an interval has transpired.
+                // because we are using floor,
                 // if its 0 then the event hasn't transpired yet.
-                // if its > 1 the event has occurred
+                // if its >= 1 the event has occurred
                 int computedIntervalId = (int) Math.Floor(span.TotalSeconds / IntervalInSeconds);
 
                 if (computedIntervalId >= 1)
                 {
-                    lastTime = now;
+                    lastHeartbeatTime = now;
+                    lastIntervalTime = now;
                     intervalId ++;
                     intervalNotificationId++;
                     // time to fire off an event
-                    FireGameTimeIntervalEvent(GameTimeManagerState.Running);
+                    FireGameTimeIntervalEvent(GameTimeManagerState.Running, GameTimeEventType.GameInterval);
+                    return;
+                }
+
+                // IntervalSeconds / HeartbeatPerInterval is the number of seconds between
+                // Heartbeat events.
+                int heartbeatSeconds = IntervalInSeconds / HeartbeatPerInterval;
+                computedIntervalId = (int) Math.Floor(span.TotalSeconds / heartbeatSeconds);
+                if (computedIntervalId >= 1)
+                {
+                    lastHeartbeatTime = now;
+                    intervalNotificationId++;
+                    // time to fire off an event
+                    FireGameTimeIntervalEvent(GameTimeManagerState.Running, GameTimeEventType.Heartbeat);
                 }
                 
             }
@@ -101,10 +118,11 @@ namespace TatmanGames.Common.Scene
             }
         }
 
-        private void FireGameTimeIntervalEvent(GameTimeManagerState state)
+        private void FireGameTimeIntervalEvent(GameTimeManagerState state, GameTimeEventType eventType)
         {
-            TimeSpan totalTime = lastTime - startTime;
+            TimeSpan totalTime = lastIntervalTime - startTime;
             GameTimeIntervalUpdate data = new GameTimeIntervalUpdate((int) totalTime.TotalSeconds, intervalId, intervalNotificationId, state);
+            data.EventType = eventType;
             GameTimeInterval interval = OnGameTimeInterval;
 
             if (null == interval) return;
