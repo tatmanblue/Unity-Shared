@@ -58,7 +58,13 @@ namespace TatmanGames.Common.Scene
 
         public void Resume()
         {
-            startTime = new DateTime();
+            // Need some work here. time is lost when the game time manager is paused between
+            // intervals.  time can be "gained" as well if they track time
+            // (such as mgt unit finishing work after a given amount of time) and are looking
+            // at TotalSeconds value as the source of truth
+            DateTime now = DateTime.Now;
+            lastIntervalTime = now;
+            lastHeartbeatTime = now;
             trackingTime = true;
         }
 
@@ -99,6 +105,7 @@ namespace TatmanGames.Common.Scene
                     return;
                 }
 
+                // logic is the same here for figuring out heartbeat interval
                 // IntervalSeconds / HeartbeatPerInterval is the number of seconds between
                 // Heartbeat events.
                 int heartbeatSeconds = IntervalInSeconds / HeartbeatPerInterval;

@@ -71,9 +71,9 @@ namespace Common.Demo.Code
         {
             try
             {
-                Log("Pausing GameTimeManager");
+                Log("Resume GameTimeManager");
                 IGameTimeManager gameTimeManager = GlobalServicesLocator.Instance.GetService<IGameTimeManager>();
-                gameTimeManager.Pause();
+                gameTimeManager.Resume();
             }
             catch (ServiceLocatorException slex)
             {
