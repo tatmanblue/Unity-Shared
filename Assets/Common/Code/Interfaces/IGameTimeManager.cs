@@ -49,7 +49,7 @@ namespace TatmanGames.Common.Interfaces
 
         /// <summary>
         /// Update called at some consistent interval such as
-        /// from GameObject (monobehavior OnUpdate method)
+        /// from GameObject (monobehavior) OnUpdate method
         ///
         /// The implementation will compute how much time has passed since the last
         /// Update()
