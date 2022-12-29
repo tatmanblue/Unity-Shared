@@ -5,6 +5,7 @@
     /// </summary>
     public interface ILogger
     {
+        void Debug(string statement);
         void LogWarning(string statement);
         void Log(string statement);
     }

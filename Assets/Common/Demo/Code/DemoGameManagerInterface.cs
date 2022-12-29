@@ -24,7 +24,7 @@ namespace Common.Demo.Code
                 IGameTimeManager gameTimeManager = GlobalServicesLocator.Instance.GetService<IGameTimeManager>();
                 gameTimeManager.Update();
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 // nothing to do
             }
@@ -36,7 +36,7 @@ namespace Common.Demo.Code
             {
                 GlobalServicesLocator.Instance.GetService<ILogger>()?.Log(message);
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 Debug.Log($"{message} - no logger defined");
             }

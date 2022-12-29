@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace TatmanGames.Common.Scene
+﻿namespace TatmanGames.Common.Scene
 {
     /// <summary>
     /// Logging is sorta disabled with this implementation
@@ -9,9 +7,11 @@ namespace TatmanGames.Common.Scene
     {
         public NoLogging()
         {
-            Debug.LogWarning("NoLogging Enabled");
+            UnityEngine.Debug.LogWarning("NoLogging Enabled");
         }
 
+        public void Debug(string statement) {}
+        
         public void LogWarning(string statement) {}
 
         public void Log(string statement) {}

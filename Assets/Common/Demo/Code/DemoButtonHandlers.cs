@@ -46,7 +46,7 @@ namespace Common.Demo.Code
                 IGameTimeManager gameTimeManager = GlobalServicesLocator.Instance.GetService<IGameTimeManager>();
                 gameTimeManager.Stop();
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 // nothing to do
             }
@@ -61,7 +61,7 @@ namespace Common.Demo.Code
                 IGameTimeManager gameTimeManager = GlobalServicesLocator.Instance.GetService<IGameTimeManager>();
                 gameTimeManager.Pause();
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 // nothing to do
             }
@@ -75,7 +75,7 @@ namespace Common.Demo.Code
                 IGameTimeManager gameTimeManager = GlobalServicesLocator.Instance.GetService<IGameTimeManager>();
                 gameTimeManager.Resume();
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 // nothing to do
             }
@@ -112,7 +112,7 @@ namespace Common.Demo.Code
             {
                 GlobalServicesLocator.Instance.GetService<ILogger>()?.Log(message);
             }
-            catch (ServiceLocatorException slex)
+            catch (ServiceLocatorException)
             {
                 Console.WriteLine($"{message} - no logger defined");
             }
@@ -124,7 +124,7 @@ namespace Common.Demo.Code
             {
                 return Convert.ToInt32(Interval.text);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // returning 1 to avoid math errors in this class
                 return 1;
@@ -137,7 +137,7 @@ namespace Common.Demo.Code
             {
                 return Convert.ToInt32(HeartbeatsPerInterval.text);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // returning 1 to avoid math errors in this class
                 return 1;
