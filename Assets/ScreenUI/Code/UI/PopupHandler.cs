@@ -13,6 +13,7 @@ namespace TatmanGames.ScreenUI.UI
         private IPopupEventsManager popupEventsManager = null;
         
         public Canvas Canvas { get; set; }
+        public bool KeepWorldSpace { get; set; } = true;
         public bool IsDialogActive { get; private set; } = false;
         public Color BackgroundColor { get; set; } = new Color(10.0f / 255.0f, 10.0f / 255.0f, 10.0f / 255.0f, 0.6f);
         public AudioSource AudioSource { get; set; } = null;
@@ -60,7 +61,7 @@ namespace TatmanGames.ScreenUI.UI
             // this works correctly as long as Canvas is set to 'Screen Space - Overlay'
             control.transform.position = Vector3.zero;
             control.transform.localScale = Vector3.one;
-            control.transform.SetParent(Canvas.transform, true);
+            control.transform.SetParent(Canvas.transform, KeepWorldSpace);
             
         }
         
@@ -162,7 +163,7 @@ namespace TatmanGames.ScreenUI.UI
             activeDialog.transform.localScale = Vector3.one;
             
             if (null != Canvas)
-                activeDialog.transform.SetParent(Canvas.transform, true);
+                activeDialog.transform.SetParent(Canvas.transform, KeepWorldSpace);
             
             popupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
             

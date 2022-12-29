@@ -6,6 +6,7 @@ namespace TatmanGames.ScreenUI.Interfaces
 {
     public interface IPopupHandler
     {
+        bool KeepWorldSpace { get; set; }
         bool IsDialogActive { get; }
         AudioSource AudioSource { get; set; }
         AudioClip OpenSound { get; set; }
