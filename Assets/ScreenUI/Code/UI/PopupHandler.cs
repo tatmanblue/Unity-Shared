@@ -25,10 +25,10 @@ namespace TatmanGames.ScreenUI.UI
             this.popupEventsManager = popupEventsManager;
         }
 
-        public void ShowPopup(GameObject popup)
+        public GameObject ShowPopup(GameObject popup)
         {
             if (null == popup)
-                return;
+                return null;
             
             // TODO: possibly refactor this since the code is duplicated in ShowDialogPrefab
             var control = Canvas.Instantiate<GameObject>(popup);
@@ -62,20 +62,21 @@ namespace TatmanGames.ScreenUI.UI
             control.transform.position = Vector3.zero;
             control.transform.localScale = Vector3.one;
             control.transform.SetParent(Canvas.transform, KeepWorldSpace);
-            
+
+            return control;
         }
         
         /// <summary>
         /// makes a dialog appear on screen, centered
         /// </summary>
         /// <param name="dialog"></param>
-        public void ShowDialog(GameObject dialog)
+        public GameObject ShowDialog(GameObject dialog)
         {
-            if (true == IsDialogActive) return;
+            if (true == IsDialogActive) return null;
             
             IsDialogActive = true;
             AddBackground();
-            ShowDialogPrefab(dialog);
+            return ShowDialogPrefab(dialog);
         }
 
         /// <summary>
@@ -83,16 +84,15 @@ namespace TatmanGames.ScreenUI.UI
         /// the new dialog
         /// </summary>
         /// <param name="dialog"></param>
-        public void ReplaceDialog(GameObject dialog)
+        public GameObject ReplaceDialog(GameObject dialog)
         {
             if (false == IsDialogActive)
             {
-                ShowDialog(dialog);
-                return;
+                return ShowDialog(dialog);
             }
             
             DestroyActiveDialog();
-            ShowDialogPrefab(dialog);
+            return ShowDialogPrefab(dialog);
         }
 
         public void CloseDialog()
@@ -149,10 +149,10 @@ namespace TatmanGames.ScreenUI.UI
             background = null;
         }
         
-        private void ShowDialogPrefab(GameObject which)
+        private GameObject ShowDialogPrefab(GameObject which)
         {
             if (null == which)
-                return;
+                return null;
             
             if (null != OpenSound && null != AudioSource)
                 AudioSource.PlayOneShot(OpenSound);
@@ -166,7 +166,8 @@ namespace TatmanGames.ScreenUI.UI
                 activeDialog.transform.SetParent(Canvas.transform, KeepWorldSpace);
             
             popupEventsManager?.FireDialogOpenEvent(this.GetDialogName(activeDialog));
-            
+
+            return activeDialog;
         }
 
         private void RemoveDialogPrefab()

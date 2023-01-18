@@ -7,6 +7,7 @@ namespace TatmanGames.Common.Scene
     /// Responsible for figuring out when an "Interval" has been reached
     ///
     /// An Interval is like Day or some concrete time span
+    ///
     /// </summary>
     public class GameTimeManager : IGameTimeManager
     {
@@ -22,6 +23,8 @@ namespace TatmanGames.Common.Scene
         /// expires another event will be fired and the HeartbeatPerInterval restart
         /// </summary>
         public int HeartbeatPerInterval { get; private set; }
+
+        public GameTimeIntervalUpdate MostRecentUpdate { get; private set; } = null;
 
         public event GameTimeInterval OnGameTimeInterval;
         
@@ -131,6 +134,9 @@ namespace TatmanGames.Common.Scene
             TimeSpan totalTime = lastIntervalTime - startTime;
             GameTimeIntervalUpdate data = new GameTimeIntervalUpdate((int) totalTime.TotalSeconds, intervalId, intervalNotificationId, state);
             data.EventType = eventType;
+
+            MostRecentUpdate = data;
+            
             GameTimeInterval interval = OnGameTimeInterval;
 
             if (null == interval) return;

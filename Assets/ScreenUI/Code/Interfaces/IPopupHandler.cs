@@ -13,9 +13,9 @@ namespace TatmanGames.ScreenUI.Interfaces
         AudioClip CloseSound { get; set; }
         Canvas Canvas { get; set; }
         Color BackgroundColor { get; set; }
-        void ShowDialog(GameObject dialog);
-        void ShowPopup(GameObject popup);
-        void ReplaceDialog(GameObject dialog);
+        GameObject ShowDialog(GameObject dialog);
+        GameObject ShowPopup(GameObject popup);
+        GameObject ReplaceDialog(GameObject dialog);
         void CloseDialog();
     }
 }

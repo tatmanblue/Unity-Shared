@@ -9,6 +9,10 @@ namespace TatmanGames.Common.Interfaces
     ///     Interval is some time space that is meaningful to the player
     ///     Expired means when time lapsed = Interval.
     ///     HeartBeat is a event fired after a fixed time lapse
+    ///
+    /// PLEASE NOTE:  in future version interface is going have breaking changes:
+    ///      IntervalInSeconds -> KeyframeInSeconds
+    ///      HeartbeatPerInterval -> FramesPerKeyFrame
     /// </summary>
     public interface IGameTimeManager
     {
@@ -24,6 +28,12 @@ namespace TatmanGames.Common.Interfaces
         /// Should round down if IntervalInSeconds Mod HeartbeatPerInterval != 0
         /// </summary>
         int HeartbeatPerInterval { get; }
+        
+        /// <summary>
+        /// Allows a process that just started to get this most recent update
+        /// Can be null if game time manager hasn't started yet
+        /// </summary>
+        GameTimeIntervalUpdate MostRecentUpdate { get; }
 
         /// <summary>
         /// Starts the game time clock, starting fresh thus should
