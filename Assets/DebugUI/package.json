@@ -2,7 +2,7 @@
    "description": "provides UI and input handling for a debug console",
    "displayName": "Tatman Games Debug Console UI Kit",
    "name": "com.tatman-games.debugui",
-   "version": "0.1.6",
+   "version": "0.1.7",
    "unity": "2021.3",
   "author": {
     "name": "Matt Raffel",
