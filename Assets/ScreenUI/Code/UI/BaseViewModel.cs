@@ -77,9 +77,10 @@ namespace TatmanGames.ScreenUI.UI
         /// if this method is called then its assumed GameObject has not been found
         /// previously and does not exist in matchedChildren
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="parent"></param>
+        /// <param name="elementName"></param>
         /// <returns></returns>
-        private GameObject SearchFor(Transform parent, string name)
+        private GameObject SearchFor(Transform parent, string elementName)
         {
             if (parent == null) return null;
             GameObject item = null;
@@ -87,14 +88,14 @@ namespace TatmanGames.ScreenUI.UI
             for (int count = 0; count < parent.childCount; count++)
             {
                 Transform t = parent.GetChild(count);
-                if (t.name == name)
+                if (t.name == elementName)
                 {
                     matchedChildren.Add(t.gameObject);
                     item = t.gameObject;
                     break;
                 }
 
-                item = SearchFor(t, name);
+                item = SearchFor(t, elementName);
                 if (null != item)
                     break;
             }
@@ -113,20 +114,27 @@ namespace TatmanGames.ScreenUI.UI
         ///
         /// Rules!  Each GameObject in the hierarchy must have a unique name 
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        protected GameObject SearchFor(string name)
+        /// <param name="elementName"></param>
+        /// <returns>GameObject</returns>
+        protected GameObject SearchFor(string elementName)
         {
-            GameObject item = matchedChildren.Find(o => o.name == name);
+            GameObject item = matchedChildren.Find(o => o.name == elementName);
             if (item == null)
             {
-                item = SearchFor(this.transform, name);
+                item = SearchFor(this.transform, elementName);
             }
 
             return item;
         }
         
         #region UI setter functions
+        protected void EnableButton(string fieldName, bool isEnabled)
+        {
+            GameObject child = SearchFor(fieldName);
+            Button btn = child.GetComponent<Button>();
+            btn.interactable = isEnabled;
+        }
+        
         protected void SetText(string fieldName, string data)
         {
             GameObject child = SearchFor(fieldName);
