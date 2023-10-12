@@ -2,11 +2,11 @@
    "description": "provides behaviors shared between projects",
    "displayName": "Tatman Games Common Library",
    "name": "com.tatman-games.common",
-   "version": "0.1.7",
+   "version": "0.1.8",
    "unity": "2021.3",
   "author": {
     "name": "Matt Raffel",
     "email": "matt.raffel@gmail.com",
-    "url": "https://www.tatmanblue.com"
+    "url": "https://www.tatmangames.com"
   }
 }

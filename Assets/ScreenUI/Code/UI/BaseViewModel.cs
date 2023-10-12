@@ -1,30 +1,29 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 using TatmanGames.Common;
 using TatmanGames.Common.Interfaces;
 using TatmanGames.Common.ServiceLocator;
 using TatmanGames.ScreenUI.Interfaces;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 using ILogger = TatmanGames.Common.Interfaces.ILogger;
-
 
 namespace TatmanGames.ScreenUI.UI
 {
     /// <summary>
-    /// Views (UI) tend to be constructed the same and share behaviors.  This class
-    /// encapsulates a lot of those shared behaviors.
+    /// Most of the views should be constructed the same and share some behaviors
     ///
     /// Do not implement Awake, Start, Update etc in the derived class
     ///
     /// Override DoAwake(), DoStart(), DoUIUpdate()
     ///
-    /// IGameTimeManager, ILogger implementations required 
+    /// TODO: move to TatmanGames.ScreenUI, some concerns: IGameTimeManager, ILogger
     /// </summary>
     public abstract class BaseViewModel<T> : MonoBehaviour, IViewModel<T>
     {
-        private List<GameObject> matchedChildren = new List<GameObject>();
+        private List<GameObject> matchedChildren = new ();
         private IGameTimeManager gameTimeManager;
         private bool doUIRefresh = true;
         protected ILogger logger;
@@ -40,18 +39,39 @@ namespace TatmanGames.ScreenUI.UI
             viewData = data;
             InvalidateView();
         }
+
+        /// <summary>
+        /// TEMP TODO hack and need to use a better means to expose data
+        /// </summary>
+        /// <returns></returns>
+        public T ViewData()
+        {
+            return viewData;
+        }
         
         private void Awake()
         {
-            logger = GetService<ILogger>();
-            gameTimeManager = GetService<IGameTimeManager>();
-            gameTimeManager.OnGameTimeInterval += OnGameTimeInterval;
-            
+            logger = this.GetService<ILogger>();
+            try
+            {
+                // TODO this is ugly and should be refactored in such a way not 
+                // TODO all ViewModels need gametime manager
+                gameTimeManager = this.GetService<IGameTimeManager>();
+                gameTimeManager.OnGameTimeInterval += OnGameTimeInterval;
+            }
+            catch (ServiceLocatorException)
+            {
+                logger?.Debug("View will be inactive");
+            }
+
             DoAwake();
         }
 
         private void Start()
         {
+            if (null == logger)
+                logger = this.GetService<ILogger>();
+            
             DoStart();
         }
 
@@ -65,6 +85,7 @@ namespace TatmanGames.ScreenUI.UI
         private void OnDestroy()
         {
             DoOnDestroy();
+            if (null == gameTimeManager) return;
             gameTimeManager.OnGameTimeInterval -= OnGameTimeInterval;
         }
 
@@ -77,10 +98,9 @@ namespace TatmanGames.ScreenUI.UI
         /// if this method is called then its assumed GameObject has not been found
         /// previously and does not exist in matchedChildren
         /// </summary>
-        /// <param name="parent"></param>
-        /// <param name="elementName"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        private GameObject SearchFor(Transform parent, string elementName)
+        private GameObject SearchFor(Transform parent, string name)
         {
             if (parent == null) return null;
             GameObject item = null;
@@ -88,25 +108,39 @@ namespace TatmanGames.ScreenUI.UI
             for (int count = 0; count < parent.childCount; count++)
             {
                 Transform t = parent.GetChild(count);
-                if (t.name == elementName)
+                if (t.name == name)
                 {
                     matchedChildren.Add(t.gameObject);
                     item = t.gameObject;
                     break;
                 }
 
-                item = SearchFor(t, elementName);
+                item = SearchFor(t, name);
                 if (null != item)
                     break;
             }
 
             return item;
         }
+        
+        private IEnumerator ShowWithFadeIn(GameObject control)
+        {
+            CanvasGroup cg = control.GetComponent<CanvasGroup>();
+            while (cg.alpha < 1.0f)
+            {
+                cg.alpha += 0.105f;
+                yield return new WaitForSeconds(0.025f);
+            }
+            
+            yield return null;
+        }
 
+        #region overridable functions
         protected virtual void DoAwake() {}
         protected virtual void DoStart() {}
         protected virtual void DoUIUpdate() {}
         protected virtual void DoOnDestroy() {}
+        #endregion
         
         /// <summary>
         /// Get a GameObject that is child by name.  Search results are cached thus subsequent
@@ -114,20 +148,34 @@ namespace TatmanGames.ScreenUI.UI
         ///
         /// Rules!  Each GameObject in the hierarchy must have a unique name 
         /// </summary>
-        /// <param name="elementName"></param>
-        /// <returns>GameObject</returns>
-        protected GameObject SearchFor(string elementName)
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected GameObject SearchFor(string name)
         {
-            GameObject item = matchedChildren.Find(o => o.name == elementName);
+            GameObject item = matchedChildren.Find(o => o.name == name);
             if (item == null)
             {
-                item = SearchFor(this.transform, elementName);
+                item = SearchFor(this.transform, name);
             }
 
             return item;
         }
         
         #region UI setter functions
+
+        protected void Hide(string fieldName)
+        {
+            GameObject child = SearchFor(fieldName);
+            CanvasGroup cg = child.GetComponent<CanvasGroup>();
+            cg.alpha = 0.0f;
+        }
+
+        protected void Show(string fieldName)
+        {
+            GameObject child = SearchFor(fieldName);
+            StartCoroutine(ShowWithFadeIn(child));
+        }
+        
         protected void EnableButton(string fieldName, bool isEnabled)
         {
             GameObject child = SearchFor(fieldName);
@@ -162,7 +210,7 @@ namespace TatmanGames.ScreenUI.UI
             if (null == image) return;
             image.overrideSprite = sprite;
         }
-
+        
         protected void SelectDropItemItem(string fieldName, string matching)
         {
             GameObject child = SearchFor(fieldName);
