@@ -4,66 +4,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TatmanGames.Common;
-using TatmanGames.Common.Interfaces;
 using TatmanGames.Common.ServiceLocator;
-using TatmanGames.ScreenUI.Interfaces;
 using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.ScreenUI.UI
 {
     /// <summary>
-    /// Most of the views should be constructed the same and share some behaviors
+    /// for views (UI) that need to manipulate child components easily, this
+    /// controller exposes protected helper methods.  Also sets up logging
     ///
-    /// Do not implement Awake, Start, Update etc in the derived class
+    /// When inheriting from this type, do not implement Awake(), Start() etc...
+    /// instead override DoAwake(), DoStart() etc...
     ///
-    /// Override DoAwake(), DoStart(), DoUIUpdate()
-    ///
+    /// Requires:  TextMeshPro
     /// </summary>
-    [Obsolete(message:"Use UpdatableViewModel")]
-    public abstract class BaseViewModel<T> : MonoBehaviour, IViewModel<T>
+    public class ViewController : MonoBehaviour
     {
         private List<GameObject> matchedChildren = new ();
-        private IGameTimeManager gameTimeManager;
-        private bool doUIRefresh = true;
+
         protected ILogger logger;
-        protected T viewData = default(T);
-
-        public void InvalidateView()
-        {
-            doUIRefresh = true;
-        }
         
-        public virtual void SetViewData(T data)
-        {
-            viewData = data;
-            InvalidateView();
-        }
-
-        /// <summary>
-        /// TEMP TODO hack and need to use a better means to expose data
-        /// </summary>
-        /// <returns></returns>
-        public T ViewData()
-        {
-            return viewData;
-        }
-        
+        #region unity methods
         private void Awake()
         {
             logger = this.GetService<ILogger>();
-            try
-            {
-                // TODO this is ugly and should be refactored in such a way not 
-                // TODO all ViewModels need gametime manager
-                gameTimeManager = this.GetService<IGameTimeManager>();
-                gameTimeManager.OnGameTimeInterval += OnGameTimeInterval;
-            }
-            catch (ServiceLocatorException)
-            {
-                logger?.Debug("View will be inactive");
-            }
-
             DoAwake();
         }
 
@@ -74,26 +38,14 @@ namespace TatmanGames.ScreenUI.UI
             
             DoStart();
         }
-
-        private void Update()
-        {
-            if (null == viewData || false == doUIRefresh) return;
-            doUIRefresh = false;
-            DoUIUpdate();
-        }
-
+        
         private void OnDestroy()
         {
             DoOnDestroy();
-            if (null == gameTimeManager) return;
-            gameTimeManager.OnGameTimeInterval -= OnGameTimeInterval;
         }
-
-        private void OnGameTimeInterval(GameTimeIntervalUpdate data)
-        {
-            doUIRefresh = true;
-        }
+        #endregion
         
+        #region private methods
         /// <summary>
         /// if this method is called then its assumed GameObject has not been found
         /// previously and does not exist in matchedChildren
@@ -134,7 +86,8 @@ namespace TatmanGames.ScreenUI.UI
             
             yield return null;
         }
-
+        #endregion
+        
         #region overridable functions
         protected virtual void DoAwake() {}
         protected virtual void DoStart() {}
@@ -142,26 +95,7 @@ namespace TatmanGames.ScreenUI.UI
         protected virtual void DoOnDestroy() {}
         #endregion
         
-        /// <summary>
-        /// Get a GameObject that is child by name.  Search results are cached thus subsequent
-        /// calls returned the cached GameObject.
-        ///
-        /// Rules!  Each GameObject in the hierarchy must have a unique name 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        protected GameObject SearchFor(string name)
-        {
-            GameObject item = matchedChildren.Find(o => o.name == name);
-            if (item == null)
-            {
-                item = SearchFor(this.transform, name);
-            }
-
-            return item;
-        }
-        
-        #region UI setter functions
+                #region UI setter functions
 
         protected void Hide(string fieldName)
         {
@@ -278,18 +212,30 @@ namespace TatmanGames.ScreenUI.UI
         }
         #endregion
         
-        protected string GetDialogName()
+        #region protected methods for derived types
+        /// <summary>
+        /// Get a GameObject that is child by name.  Search results are cached thus subsequent
+        /// calls returned the cached GameObject.
+        ///
+        /// Rules!  Each GameObject in the hierarchy must have a unique name 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected GameObject SearchFor(string name)
         {
-            string dlgName = this.name;
-            int indexOf = dlgName.IndexOf("(Clone)");
-            if (0 >= indexOf)
-                return dlgName;
-            return dlgName.Remove(indexOf);
+            GameObject item = matchedChildren.Find(o => o.name == name);
+            if (item == null)
+            {
+                item = SearchFor(this.transform, name);
+            }
+
+            return item;
         }
-        
-        private T GetService<T>()
+
+        protected T GetService<T>()
         {
             return GlobalServicesLocator.Instance.GetService<T>();
         }
+        #endregion
     }
 }
