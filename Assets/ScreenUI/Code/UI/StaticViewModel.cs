@@ -21,8 +21,9 @@ namespace TatmanGames.ScreenUI.UI
             }
             set
             {
+                T old = data;
                 data = value;
-                OnViewDataChanged(data);
+                OnViewDataChanged(old, data);
             }
         }
 
@@ -31,7 +32,8 @@ namespace TatmanGames.ScreenUI.UI
         /// <summary>
         /// allows derived types ability to react when ViewData has changed
         /// </summary>
+        /// <param name="old"></param>
         /// <param name="data"></param>
-        protected virtual void OnViewDataChanged(T data = default(T)) {}
+        protected virtual void OnViewDataChanged(T old, T data = default(T)) {}
     }
 }
