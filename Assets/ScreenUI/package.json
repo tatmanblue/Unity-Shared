@@ -2,7 +2,7 @@
    "description": "a set of tools to help display user interface in Unity",
    "displayName": "Tatman Games Screen UI Kit",
    "name": "com.tatman-games.screenui",
-   "version": "0.1.9",
+   "version": "0.1.10",
    "unity": "2021.3",
   "author": {
     "name": "Matt Raffel",

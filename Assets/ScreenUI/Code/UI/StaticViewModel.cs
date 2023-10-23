@@ -13,6 +13,25 @@ namespace TatmanGames.ScreenUI.UI
         /// TODO approach would be make setter protected/private and implement some
         /// TODO type of factory (or related) pattern
         /// </summary>
-        public T ViewData { get; set; } = default(T);
+        public T ViewData 
+        {
+            get
+            {
+                return data;
+            }
+            set
+            {
+                data = value;
+                OnViewDataChanged(data);
+            }
+        }
+
+        private T data = default(T);
+        
+        /// <summary>
+        /// allows derived types ability to react when ViewData has changed
+        /// </summary>
+        /// <param name="data"></param>
+        protected virtual void OnViewDataChanged(T data = default(T)) {}
     }
 }

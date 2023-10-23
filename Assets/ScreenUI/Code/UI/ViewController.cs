@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TatmanGames.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,11 +23,14 @@ namespace TatmanGames.ScreenUI.UI
     {
         private List<GameObject> matchedChildren = new ();
 
+        // helper for logging but does require it to exist already
+		// be particularlly aware of use during DoAwake()
         protected ILogger logger;
         
         #region unity methods
         private void Awake()
         {
+			// will try to get logger here but it may not exist
             logger = this.GetService<ILogger>();
             DoAwake();
         }
@@ -95,7 +99,7 @@ namespace TatmanGames.ScreenUI.UI
         protected virtual void DoOnDestroy() {}
         #endregion
         
-                #region UI setter functions
+        #region UI setter functions
 
         protected void Hide(string fieldName)
         {
@@ -234,7 +238,12 @@ namespace TatmanGames.ScreenUI.UI
 
         protected T GetService<T>()
         {
-            return GlobalServicesLocator.Instance.GetService<T>();
+            try
+            {
+                return GlobalServicesLocator.Instance.GetService<T>();
+            } catch(ServiceLocatorException) {}
+
+            return default(T);
         }
         #endregion
     }
