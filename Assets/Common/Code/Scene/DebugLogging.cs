@@ -10,16 +10,19 @@ namespace TatmanGames.Common.Scene
     /// </summary>
     public class DebugLogging : TatmanGames.Common.Interfaces.ILogger
     {
+        [System.Diagnostics.DebuggerHidden]
         public void Debug(string statement)
         {
             UnityEngine.Debug.Log(statement);    
         }
         
+        [System.Diagnostics.DebuggerHidden]
         public void LogWarning(string statement)
         {
             UnityEngine.Debug.LogWarning(statement);
         }
 
+        [System.Diagnostics.DebuggerHidden]
         public void Log(string statement)
         {
             UnityEngine.Debug.Log(statement);

@@ -1,4 +1,5 @@
 ﻿using System;
+using TatmanGames.Common.Scene;
 using TatmanGames.Common.ServiceLocator;
 using TatmanGames.DebugUI.Commands;
 using TatmanGames.DebugUI.Interfaces;
@@ -9,13 +10,16 @@ namespace TatmanGames.DebugUI.Demo
 {
     public class DemoCustomCommandInitializer : MonoBehaviour
     {
+        private ServicesLocator services;
         private void Start()
         {
-            IDebugEngine engine = GlobalServicesLocator.Instance.GetService<IDebugEngine>();
+            services = GlobalServicesLocator.Instance;
+            services.AddReplaceService<ILogger>(new DebugLogging());
+            IDebugEngine engine = services.GetService<IDebugEngine>();
             if (null == engine)
             {
                 engine = new CommandEngine();
-                GlobalServicesLocator.Instance.AddService<IDebugEngine>(engine);
+                services.AddService<IDebugEngine>(engine);
             }
             
             engine.AddCommand(new DemoCustomCommand());
@@ -27,7 +31,7 @@ namespace TatmanGames.DebugUI.Demo
 
         private void EngineOnStateChange(DebugCommandWindowState state)
         {
-            ILogger logger = GlobalServicesLocator.Instance.GetService<ILogger>();
+            ILogger logger = services.GetService<ILogger>();
             logger?.Log($"Debug Console state is {state}");
         }
     }
