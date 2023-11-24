@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using TatmanGames.Common;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TatmanGames.Common;
 using TatmanGames.Common.ServiceLocator;
+using TatmanGames.ScreenUI.Interfaces;
 using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.ScreenUI.UI
@@ -229,14 +230,14 @@ namespace TatmanGames.ScreenUI.UI
         ///
         /// Rules!  Each GameObject in the hierarchy must have a unique name 
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="fieldName"></param>
         /// <returns></returns>
-        protected GameObject SearchFor(string name)
+        protected GameObject SearchFor(string fieldName)
         {
-            GameObject item = matchedChildren.Find(o => o.name == name);
+            GameObject item = matchedChildren.Find(o => o.name == fieldName);
             if (item == null)
             {
-                item = SearchFor(this.transform, name);
+                item = SearchFor(this.transform, fieldName);
             }
 
             return item;
@@ -250,6 +251,25 @@ namespace TatmanGames.ScreenUI.UI
             } catch(ServiceLocatorException) {}
 
             return default(T);
+        }
+        
+        protected string GetDialogName()
+        {
+            string dlgName = this.name;
+            int indexOf = dlgName.IndexOf("(Clone)");
+            if (0 >= indexOf)
+                return dlgName;
+            return dlgName.Remove(indexOf);
+        }
+        
+        protected void CloseDialog(string buttonId, string dlgName = "")
+        {
+            IPopupEventsManager service = this.GetService<IPopupEventsManager>();
+
+            if (string.IsNullOrEmpty(dlgName))
+                dlgName = GetDialogName();
+            
+            service?.FireButtonPressedEvent(dlgName, buttonId);
         }
         #endregion
     }
