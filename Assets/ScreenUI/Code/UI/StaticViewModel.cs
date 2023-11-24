@@ -4,6 +4,10 @@ namespace TatmanGames.ScreenUI.UI
 {
     /// <summary>
     /// Adds Type support for views using data models
+    ///
+    /// Use when type support is needed but the view doesn't need to refreshed
+    /// because the underlying data is not dynamic.  To refresh when ViewData is
+    /// changed, override <inheritdoc cref="protected void OnViewDataChanged(old, data)"/> 
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class StaticViewModel<T> : ViewController

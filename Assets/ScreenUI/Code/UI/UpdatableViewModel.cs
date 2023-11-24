@@ -6,11 +6,12 @@ using TatmanGames.Common.Interfaces;
 namespace TatmanGames.ScreenUI.UI
 {
     /// <summary>
-    /// For data driven views that need to be refreshed at regular intervals triggered
-    /// by IGameTimeManager implementation. Requires IGameTimeManager implementation
+    /// For data driven views that need to be refreshed at regular intervals but not when 
+    /// the underlying data actually changed. Updates will be triggeredIGameTimeManager implementation.
+    /// Requires IGameTimeManager implementation
     ///
     /// When inheriting from this type, do not use Update()
-    /// override DoUIUpdate() 
+    /// override DoUIUpdate() to handle UI refreshes
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class UpdatableViewModel<T> : StaticViewModel<T>
@@ -23,7 +24,18 @@ namespace TatmanGames.ScreenUI.UI
             doUIRefresh = true;
         }
 
-        private void Awake()
+        private void Update()
+        {
+            // This method hides Update in base classes but that
+            // should be ok because neither StaticView nor ViewController
+            // implement it
+            if (null == ViewData || false == doUIRefresh) return;
+            doUIRefresh = false;
+
+            DoUIUpdate();
+        }
+
+        protected override void DoAwake()
         {
             try
             {
@@ -34,14 +46,6 @@ namespace TatmanGames.ScreenUI.UI
             {
                 logger?.LogWarning("View will be inactive");
             }
-        }
-        
-        private void Update()
-        {
-            if (null == ViewData || false == doUIRefresh) return;
-            doUIRefresh = false;
-
-            DoUIUpdate();
         }
 
         protected override void DoOnDestroy()
