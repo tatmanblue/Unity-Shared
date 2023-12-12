@@ -12,6 +12,9 @@ namespace TatmanGames.ScreenUI.UI
     ///
     /// When inheriting from this type, do not use Update()
     /// override DoUIUpdate() to handle UI refreshes
+    ///
+    /// When overriding any of the protected void Do...() methods, make sure to
+    /// call base.Do...() or this model breaks
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class UpdatableViewModel<T> : StaticViewModel<T>

@@ -101,7 +101,12 @@ namespace TatmanGames.ScreenUI.UI
         #endregion
         
         #region UI setter functions
-
+        protected bool GetToggle(string fieldName)
+        {
+            GameObject child = SearchFor(fieldName);
+            return child.GetComponent<Toggle>().isOn;
+        }
+        
         protected void SetToggle(string fieldName, bool setting)
         {
             GameObject child = SearchFor(fieldName);

@@ -72,6 +72,24 @@ namespace TatmanGames.Common.ServiceLocator
             return GetServiceByName<T>(name);
         }
 
+        /// <summary>
+        /// GetService with exception handler trap.  Will return null if
+        /// service is not found
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T TryGetService<T>()
+        {
+            try
+            {
+                return GetService<T>();
+            }
+            catch (Exception e)
+            {
+                return default(T);
+            }
+        }
+
         public List<string> ListAllServices()
         {
             return new List<string>(services.Keys.ToArray());
