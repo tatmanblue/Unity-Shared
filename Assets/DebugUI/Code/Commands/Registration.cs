@@ -1,8 +1,7 @@
-﻿using TatmanGames.Common.Scene;
+﻿using UnityEngine;
+using TatmanGames.Common.Scene;
 using TatmanGames.Common.ServiceLocator;
-using TatmanGames.DebugUI.CommandSupport;
 using TatmanGames.DebugUI.Interfaces;
-using UnityEngine;
 using ILogger = TatmanGames.Common.Interfaces.ILogger;
 
 namespace TatmanGames.DebugUI.Commands

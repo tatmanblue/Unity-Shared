@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TatmanGames.Common.Utility;
 using TatmanGames.DebugUI.Interfaces;
 
 namespace TatmanGames.DebugUI
@@ -11,6 +12,24 @@ namespace TatmanGames.DebugUI
         public List<IDebugCommand> Commands { get; } = new List<IDebugCommand>();
         public event GlobalCommandEvent OnGlobalCommandEvent;
         public event DebugCommandWindowStateChange OnStateChange;
+
+        /// <summary>
+        /// Finds in the running domain types with the attribute
+        /// CommandAutoLoadAttribute attached
+        /// </summary>
+        public void DiscoverCommands()
+        {
+            List<IDebugCommand> commands =
+                AttributeUtility.AllocateAll<IDebugCommand>(typeof(CommandAutoLoadAttribute));
+
+            foreach (IDebugCommand dc in commands)
+            {
+                if (null != Commands.Find( c => c.Word == dc.Word))
+                    continue;
+                
+                Commands.Add(dc);
+            }
+        }
 
         public string HandleCommand(string input)
         {

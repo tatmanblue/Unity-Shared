@@ -2,10 +2,10 @@
     "name": "TatmanGames.DebugUI",
     "rootNamespace": "TatmanGames.DebugUI",
     "references": [
-        "TatmanGames.Common",
         "Unity.TextMeshPro",
         "Unity.InputSystem",
-        "UnityEngine.UI"
+        "UnityEngine.UI",
+        "TatmanGames.Common"
     ],
     "includePlatforms": [
         "Editor",

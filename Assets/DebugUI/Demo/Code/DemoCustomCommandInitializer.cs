@@ -25,6 +25,9 @@ namespace TatmanGames.DebugUI.Demo
             engine.AddCommand(new DemoCustomCommand());
             engine.OnStateChange += EngineOnStateChange;
             
+            // autoload AutoLoadThisCommand
+            engine.DiscoverCommands();
+            
             // initialize built in commands
             Registration.Initialize();
         }
