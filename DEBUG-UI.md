@@ -57,6 +57,7 @@ You can create your own commands and add them to Debug-Ui.  Your commands can do
 1. To start, implement [`IDebugCommand` interface](https://github.com/tatmanblue/UI-Input/blob/main/Assets/DebugUI/Code/Interfaces/IDebugCommand.cs).  
 2. Alternatively you can derive your type from [`Generic Command`](https://github.com/tatmanblue/UI-Input/blob/main/Assets/DebugUI/Code/GenericCommand.cs)
 3. Add the command handler to engine, as shown in [this example](https://github.com/tatmanblue/UI-Input/blob/4578ef56d9232f2f0cdc741de220983ac88a1309/Assets/DebugUI/Demo/Code/DemoCustomCommandInitializer.cs#L21).
+4. To make commands auto discoverable, add [CommandAutoLoadAttribute](https://github.com/tatmanblue/Unity-Shared/blob/main/Assets/DebugUI/Code/CommandAutoLoadAttribute.cs) to command implementations and call [DiscoverCommands](https://github.com/tatmanblue/Unity-Shared/blob/5dd9c7474ad04ca8d290b466082b40d9d1a4c677/Assets/DebugUI/Code/Interfaces/IDebugEngine.cs#L15) when initializating the engine.
 
 At this time, there is no automatic loading of commands, nor runtime loading of assemblies.  The code must exist in the project at compile time.
 
