@@ -98,9 +98,19 @@ namespace TatmanGames.ScreenUI.UI
         protected virtual void DoStart() {}
         protected virtual void DoUIUpdate() {}
         protected virtual void DoOnDestroy() {}
+
+        /// <summary>
+        /// Place holder for eventually moving code here that can grab
+        /// a button settings config and apply that to said button
+        /// </summary>
+        /// <param name="fieldName"></param>
+        protected virtual void SetButtonStyle(string fieldName)
+        {
+            throw new NotImplementedException("SetButtonStyle is not implemented in TatmanGames.ScreenUI.UI.ViewController");
+        }
         #endregion
         
-        #region UI setter functions
+        #region UI getter setter functions
         protected bool GetToggle(string fieldName)
         {
             GameObject child = SearchFor(fieldName);
