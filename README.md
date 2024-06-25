@@ -1,6 +1,6 @@
-# UI-Input
+# UI-Shared
 
-Unity project for building framework for shared behaviors, debugging, and UI input handling.
+This repo contains 3 Unity projects for shared behaviors, debugging, and UI input handling.  This repo is actively maintained, albeit slowly, since work here comes from patterns that emerged in my commerical projects.
 
 ## Projects
 The following libraries are built in this project.  
@@ -10,7 +10,7 @@ The following libraries are built in this project.
 [ScreenUI](https://github.com/tatmanblue/UI-Input/tree/main/Assets/ScreenUI)  
 
 ## Format/Platforms
-Unity Asset/Library. Built with Unity 2021.03 LTS  (currently 2021.03.10f1)
+Unity Asset/Library. Built with Unity 2022.3 LTS  (currently 2022.03.33f1)
 
 # License
 The [license](LICENSE.md) included applies only to the files in this repo.   As the documentation states in the repo [readme.md](README.md), specific 3rd party assets are required to build and run
@@ -38,9 +38,9 @@ If you have any questions about the content of the repository, please email [mat
 ## Status
 On-going/Active
 
-This library is in prototype, early development stage.
+This library is in prototype, early development stage.  Most functionality is working and used in other projects.
 
-edited: 2022.09.21
+edited: 2024.06.25
 
 ## Documentation
 [Common](https://github.com/tatmanblue/UI-Input/blob/main/COMMON.md)  
