@@ -1,4 +1,5 @@
-# UI-Shared
+# UI-Shared  
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tatmanblue/Unity-Shared)  
 
 This repo contains 3 Unity projects for shared behaviors, debugging, and UI input handling.  This repo is actively maintained, albeit slowly, since work here comes from patterns that emerged in my commerical projects.
 
